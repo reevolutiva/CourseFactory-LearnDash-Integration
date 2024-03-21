@@ -31,7 +31,7 @@ function cfact_ld_api_key_mannger( $action, $data = null ) {
 			}
 		} catch ( Exception $e ) {
 
-			wp_die( $e->getMessage() );
+			wp_die( esc_html( $e->getMessage() ) );
 
 		}
 

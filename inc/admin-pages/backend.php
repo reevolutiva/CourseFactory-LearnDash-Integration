@@ -22,7 +22,7 @@ function bloginfo_array() {
 	foreach ( $fields as $field ) {
 		$data[ $field ] = get_bloginfo( $field );
 	}
-	return wp_json_encode( $data );
+	return $data;
 }
 
 $backend_i18n = cousefact_backend_i18n();
@@ -32,7 +32,7 @@ $backend_i18n = cousefact_backend_i18n();
 // Aquí entrego las varaiabels desde PHP hacia REACT JS.
 const bakendi18n = <?php echo wp_json_encode( $backend_i18n ); ?>;
 let req_project_list = false;
-const cfact_blog_info = <?php echo bloginfo_array(); ?>;
+const cfact_blog_info = <?php echo wp_json_encode( bloginfo_array() ); ?>;
 const cfact_current_user = <?php echo wp_json_encode( wp_get_current_user() ); ?>; 
 const CFACT_PLUGIN_URL_COURSE_LOG ="<?php echo esc_url( plugins_url( 'coursefactory-integration/course-log.json' ) ); ?>"; 
 let cfact_learndash_integration_apiKey = "<?php echo esc_html( $api_key ); ?>";
