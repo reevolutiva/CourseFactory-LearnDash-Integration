@@ -16,7 +16,7 @@ require 'inc/front/lession-ui-extends.php';
 
 // Registrar el directorio del plugin.
 define( 'CFACT_PLUGIN_DIR', str_replace( '\\', '/', __DIR__ ) );
-define("CFACT_PLUGIN_URL", plugin_dir_url(__FILE__));
+define( 'CFACT_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
 define( 'CFACT_PLUGIN_VAR_NAME', 'cfact-learndash-integration' );
 
