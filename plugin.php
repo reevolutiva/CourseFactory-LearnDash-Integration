@@ -5,7 +5,7 @@
  * Author: Reevolutiva
  * Author URI: https://reevolutiva.cl
  * License: GPLv2
- * Version: 0.0.1
+ * Version: 1.0
  * Text Domain: coursefactory-integration
  *
  * @package Course Factory Integration
