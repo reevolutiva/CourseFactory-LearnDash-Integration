@@ -18,6 +18,7 @@ require 'inc/front/lession-ui-extends.php';
 define( 'CFACT_PLUGIN_DIR', str_replace( '\\', '/', __DIR__ ) );
 
 define( 'CFACT_PLUGIN_PATH_COURSE_LOG', CFACT_PLUGIN_DIR . '/course-log.json' );
+define( 'CFACT_PLUGIN_VAR_NAME', 'cfact-learndash-integration' );
 
 add_action( 'admin_menu', 'course_factory_integration_init_menu' );
 
