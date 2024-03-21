@@ -49,11 +49,30 @@ function cfact_topic_type_counter( $lesson_id, $course_id, $user_id ) {
 			$key = 'topic';
 		}
 
+		// Valida i $key_arr tiene un carater ( _ )
+
+		$has_underscore = str_contains( $key, "_" ) ? true : false;
+
+		if ( $has_underscore ) {
+
+			// Divide $key en base a el caracter ( _ )
+			$key_arr = explode( "_", $key );
+
+			$key_render = $key_arr[0] . " " . $key_arr[1];
+
+		}else{
+
+			$key_render = $key;
+
+		}
+
+		
+
 		?>
 		<span class="ld-sep">|</span>
 		<span class="ld-item-component">
 			<?php echo esc_html( $value ); ?>
-			<?php echo esc_html( $key ); ?>            
+			<?php echo esc_html( $key_render ); ?>            
 		</span>
 		<?php
 	endforeach;
