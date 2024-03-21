@@ -23,6 +23,9 @@ function coursefac_course_data( $atts ) {
 		'coursefac_course_data'
 	);
 
+	// Defino viriables dinamicas.
+	$week_label_var = " weeks";
+
 	// Obtengo los datos del curso.
 	$cfact_project_meta         = get_post_meta( $atts['course-id'], 'cfact_project_meta', true );
 	$cfact_project_outcome_list = get_post_meta( $atts['course-id'], 'cfact_project_outcome_list', true );
@@ -50,6 +53,11 @@ function coursefac_course_data( $atts ) {
 	$practical_level  = $cfact_project_meta->practical_level;
 	$duration         = $cfact_project_meta->duration;
 
+	// Si la duracion es 1 semana, cambio el label a singular.
+	if ( $duration == 1 ) {
+		$week_label_var = " week";
+	}
+
 	$html .= '<p><b>' . __( 'Goal Annotation', 'coursefactory-integration' ) . ': </b>';
 	$html .= $goal_annotation . '</p>';
 
@@ -63,7 +71,7 @@ function coursefac_course_data( $atts ) {
 	$html .= $practical_level . '</p>';
 
 	$html .= '<p><b>' . __( 'Duration', 'coursefactory-integration' ) . ': </b>';
-	$html .= $duration . 'weeks</p>';
+	$html .= $duration . $week_label_var. '</p>';
 
 	// Objetivos de aprendisaje.
 	$html .= '<h4>' . __( 'Learning Outcomes', 'coursefactory-integration' ) . '</h4>';
