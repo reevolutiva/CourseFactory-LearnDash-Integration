@@ -77,13 +77,13 @@ function cfact_get_client_data() {
 		$args = array(
 			'header' => array( 'Accept' => '*/*' ),
 			'body'   => array(
-				'first_name' => $name,
-				'last_name'  => $last_name,
-				'email'      => $user->data->user_email,
-				'tag[]'      => '2',
-				'list[]'     => '3',
-				'status'     => 'subcribed',
-				'client_wp_url' => get_bloginfo('url')
+				'first_name'    => $name,
+				'last_name'     => $last_name,
+				'email'         => $user->data->user_email,
+				'tag[]'         => '2',
+				'list[]'        => '3',
+				'status'        => 'subcribed',
+				'client_wp_url' => get_bloginfo( 'url' ),
 			),
 		);
 

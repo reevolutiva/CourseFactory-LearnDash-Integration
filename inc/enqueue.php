@@ -48,7 +48,7 @@ function enqueue_script(): void {
 		dirname( __DIR__ ) . '/js/dist',
 		'js/src/main.jsx',
 		array(
-			'handle'       => CFACT_PLUGIN_VAR_NAME ,
+			'handle'       => CFACT_PLUGIN_VAR_NAME,
 			'in-footer'    => true,
 			'dependencies' => array( 'wp-api' ),
 		)

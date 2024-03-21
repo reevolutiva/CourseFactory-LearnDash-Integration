@@ -21,15 +21,12 @@ function cfact_topic_type_counter( $lesson_id, $course_id, $user_id ) {
 
 	global $wpdb;
 
-	$query         = $wpdb->get_results(
+	$query = $wpdb->get_results(
 		$wpdb->prepare(
 			'SELECT post_id FROM `wp_postmeta` WHERE `meta_value` = %s',
 			$lesson_id
 		)
 	);
-
-
-	
 
 	$custom_topics = array();
 
@@ -42,9 +39,6 @@ function cfact_topic_type_counter( $lesson_id, $course_id, $user_id ) {
 			$topic_type = get_post_meta( $post_id, 'cfact_topic_type', true );
 			array_push( $custom_topics, $topic_type );
 		}
-
-		
-
 	}
 
 	$lista = array_count_values( $custom_topics );

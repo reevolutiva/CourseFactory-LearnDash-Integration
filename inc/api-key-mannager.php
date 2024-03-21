@@ -20,18 +20,18 @@ function cfact_ld_api_key_mannger( $action, $data = null ) {
 
 	if ( 'add' === $action || 'update' === $action ) {
 
-		try{
+		try {
 				// Comprobar si el valor existe.
-				if ( $current_value ) {
-					// Actualizar el valor existente.
-					update_option( 'cfact_ld_api_key', $data );
-				} else {
-					// Crear un nuevo valor.
-					add_option( 'cfact_ld_api_key', $data );
-				}
-		}catch( Exception $e ){
+			if ( $current_value ) {
+				// Actualizar el valor existente.
+				update_option( 'cfact_ld_api_key', $data );
+			} else {
+				// Crear un nuevo valor.
+				add_option( 'cfact_ld_api_key', $data );
+			}
+		} catch ( Exception $e ) {
 
-			wp_die($e->getMessage());
+			wp_die( $e->getMessage() );
 
 		}
 
