@@ -120,7 +120,6 @@ function cfact_topic_type_icon( $topic_id, $course_id, $user_id ) {
 		<img class="icon-topic-type" src="<?php echo esc_url( $url_base . $icon ); ?>" />
 		<?php
 
-
 	}
 }
 

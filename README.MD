@@ -1,6 +1,5 @@
 # AI Course Creator: CourseFactory LearnDash Integration
-
-- Contributors: reevolutiva
+- Create LearnDash Courses 10X faster and revolutionize online course creation with AI-powered [CourseFactory.ai](https://cob.coursefactory.net/signup?promo=LDPlugin) integration. Enhance, automate, and localize your courses effortlessly.
 - Tags: e-learning, course creation, AI, LearnDash, instructional design
 - Requires at least: 5.0
 - Tested up to: 5.9
@@ -8,7 +7,6 @@
 - Requires PHP: 7.2
 - License: GPLv2 or later
 - License URI: https://www.gnu.org/licenses/gpl-2.0.html
-- Short description: Revolutionize online course creation with AI-powered CourseFactory.ai integration for LearnDash. Enhance, automate, and localize your courses effortlessly.
 
 ## Description
 
@@ -32,11 +30,6 @@ Yes, you can export your content . However, we are exploring future support for 
 
 - How does the AI assist in course creation? =
 Our AI algorithms analyze your content preferences, pedagogical goals, and target audience to suggest the most effective course structures, content types, and learning activities.
-
-## Screenshots
-1. The main interface of the AI Course Creator with LearnDash integration.
-2. Example of an AI-generated course outline.
-3. Feedback and improvement suggestions by the AI.
 
 ## Changelog
 ### 1.0
