@@ -49,7 +49,7 @@ function cfact_topic_type_counter( $lesson_id, $course_id, $user_id ) {
 			$key = 'topic';
 		}
 
-		// Valida i $key_arr tiene un carater ( _ )
+		// Valida i $key_arr tiene un carater ( _ ).
 
 		$has_underscore = str_contains( $key, "_" ) ? true : false;
 
@@ -66,7 +66,7 @@ function cfact_topic_type_counter( $lesson_id, $course_id, $user_id ) {
 		// Si lleva guion bajo.
 		if ( $has_underscore ) {
 
-			// Divide $key en base a el caracter ( _ )
+			// Divide $key en base a el caracter ( _ ).
 			$key_arr = explode( "_", $key );
 
 			$key_render = $key_arr[0] . " " . $key_arr[1];
