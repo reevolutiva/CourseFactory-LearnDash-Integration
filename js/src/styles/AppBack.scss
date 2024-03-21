@@ -1,0 +1,277 @@
+.AppBack, .load-modal{
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+
+    @import './_gscboostrap.scss';   
+
+    .cfact-color{
+        background-color: #ECE9E5;
+        margin-left: 10px;
+        box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.05);
+    }
+
+    .cfact-color-dark{
+        background-color: #6b6b6b;
+    }
+
+    .btn-cfact{
+        background-color: #000;
+        border-radius: 40px;
+    }
+
+    #course-import-loader-bar{
+        border-radius: 15px;
+        margin-top: 20px;
+    }
+    .header{
+        position: relative;
+        
+        h1 {
+
+            display: flex;
+            align-items: flex-end;
+
+            img{
+                width: 384px;
+            }
+
+            span{
+                font-size: 25px;
+            }
+
+        }
+
+        .button_contain{
+            position: absolute;
+            right: 0;
+            top: 10px;
+        }
+
+        button.setting, button.help{
+            background-color: transparent;
+            border: none;
+        }
+
+        button.setting{
+        &:hover{
+            &::after{
+                content: "Settings";
+                padding: 5px;
+                display: block;
+                color: #fff;
+                background-color: #000;
+                position: absolute;
+                top: 0;
+                left: 100px;
+            }
+        }}
+
+        button.help{
+        &:hover{
+            &::after{
+                content: "Help";
+                padding: 5px;
+                display: block;
+                color: #fff;
+                background-color: #000;
+                position: absolute;
+                top: 0;
+                left: 50px;
+            }
+        }}
+    }
+     
+
+}
+
+
+
+.load-modal[open="true"]{
+    border: none;
+    position: fixed;
+    top: 0;
+    left:0;
+    width: 100vw;
+    max-width: none;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    background-color: rgba(#000, 0.5);
+
+    .inner{
+        box-shadow: 0 0 3px rgba(0,0,0,0.3);
+        background-color: #fff;
+        padding: 50px;
+        transform: translateY(-200px);
+    }
+
+    .btn-cfact{
+        background-color: #000;
+        border-radius: 40px;
+        transform: translateY(10px);
+
+        &.gosth{
+            background-color: transparent;
+            color: #000 !important;
+            border: 2px solid #000;
+            padding-right: 30px;
+            padding-left: 30px;
+        }
+    }
+    
+    
+}
+
+.cfact-proyecto{
+    display: flex;
+    flex-wrap: wrap;
+
+    padding: 50px 10px 10px 10px;
+    box-shadow: rgba(#000, 0.25) 0 0 4px;
+}
+
+.cfact-proyecto-item{
+
+    margin-bottom: 45px;
+
+    .imported-tag{
+        display: none;
+    }
+
+    &.imported{
+
+        .imported-tag{
+            position: absolute;
+            top: -35px;
+            left: 15px;
+            background-color: #235AF3;
+            color: #fff;
+            padding: 10px 10px 20px 10px;
+            font-size: 16px;
+            border-radius: 5px 5px 0 0;
+            display: block;
+            a{
+                color: #fff;
+                text-decoration: none;
+                font-weight: bold;
+            
+            }
+        }
+        
+        .cfact-proyecto-item__inside{
+            border: 2px solid #235AF3;         
+            &:hover{
+                outline: none;
+                border-color: #6b6b6b;
+            }
+        }
+
+        .cfact-proyecto-item__footer{
+            justify-content: space-between; 
+        }
+
+        .btn-delete{
+            display: block;
+        }
+
+        button.btn-cfact{
+            background-color: #235AF3;
+        }
+    }
+
+
+    &__loader{
+        background-color: rgb(236, 236, 236);;
+        width: 100%;
+        height: 260px;
+        display: block;
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+
+       
+
+        span{
+            display: block;
+            width: 110%;
+            height: 50px;
+            background-color: rgb(247, 247, 247);
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translateX(-5%) rotate(-15deg);
+            animation:  loadCFProyect 1s infinite linear;
+
+            @keyframes loadCFProyect {
+                0%{
+                    transform: translateX(-5%) translateY(-50px) rotate(-15deg);
+                }
+                100%{
+                    transform: translateX(-5%) translateY(300px) rotate(-15deg);
+                
+                }
+            }
+        }
+
+        h4{
+            position: absolute;
+            left: 30%;
+            top: 30%;
+        }
+    }
+    
+    &__inside{
+        padding: 20px;
+        background-color: #ECE9E5;
+        border-radius: 12px;
+        width: 100%;
+        min-height: 320px;
+
+        position: relative;
+        cursor: pointer;
+
+        &:hover{
+            outline: 2px solid #000;
+        }
+
+        .version-item{
+            position: absolute;
+            bottom: 15%;
+        }
+    }
+
+    &__footer{
+        position: absolute;
+        bottom: 15px;
+        display: flex;
+        justify-content: flex-end;
+        width: 90%;
+        align-items: center;
+
+        p{
+            margin: 0;
+            padding: 0;
+        }
+
+        button{
+            font-size: 16px;
+        }
+    }
+
+    .btn-cfact{
+        background-color: #000;
+        border-radius: 40px;
+    }
+
+    .btn-delete{
+        color: #D63638 !important;
+        padding: 0;
+
+        display: none;
+
+        &:hover{
+            font-weight: bold;
+        }
+    }
+}

@@ -1,0 +1,31 @@
+{
+  "js/public/Logo_BG_black.png": {
+    "file": "assets/Logo_BG_black-5184e74a.png",
+    "src": "js/public/Logo_BG_black.png"
+  },
+  "js/src/assets/react.svg": {
+    "file": "assets/react-35ef61ed.svg",
+    "src": "js/src/assets/react.svg"
+  },
+  "js/src/assets/vite.svg": {
+    "file": "assets/vite-4a748afd.svg",
+    "src": "js/src/assets/vite.svg"
+  },
+  "js/src/main.css": {
+    "file": "assets/main-ac1de8dd.css",
+    "src": "js/src/main.css"
+  },
+  "js/src/main.jsx": {
+    "assets": [
+      "assets/react-35ef61ed.svg",
+      "assets/vite-4a748afd.svg",
+      "assets/Logo_BG_black-5184e74a.png"
+    ],
+    "css": [
+      "assets/main-ac1de8dd.css"
+    ],
+    "file": "assets/main-ed1e1d35.js",
+    "isEntry": true,
+    "src": "js/src/main.jsx"
+  }
+}

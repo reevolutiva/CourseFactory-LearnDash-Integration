@@ -1,0 +1,14 @@
+.single-sfwd-courses .ld-item-components span:nth-child(1){
+    display: none;
+}
+.single-sfwd-courses .ld-item-components span{
+    text-transform: capitalize;
+}
+.single-sfwd-courses .ld-item-components span:nth-child(2){
+    display: none;            
+}
+
+.single-sfwd-courses .icon-topic-type{
+    width: 25px;
+    margin-right: 12px;
+}
