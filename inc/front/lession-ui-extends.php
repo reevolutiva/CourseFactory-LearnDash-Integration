@@ -7,7 +7,8 @@
  * @package Course Factory Integration.
  */
 
-add_action( 'learndash-lesson-components-after', 'cfact_topic_type_counter', 10, 3 );
+//add_action( 'learndash-lesson-components-after', 'cfact_topic_type_counter', 10, 3 );
+add_action( 'learndash-lesson-components-before', 'cfact_topic_type_counter', 10, 3 );
 
 /**
  * Lista los topicos dentro de una leccion y cuenta cuantos hay de cada tipo.
@@ -41,16 +42,18 @@ function cfact_topic_type_counter( $lesson_id, $course_id, $user_id ) {
 		}
 	}
 
+	// Esta lista es la que ha de ser recorrida.
 	$lista = array_count_values( $custom_topics );
 
+	
+
+	// Recorro la lista.
 	foreach ( $lista as $key => $value ) :
 
 		if ( '' === $key ) {
 			$key = 'topic';
 		}
-
-		// Valida i $key_arr tiene un carater ( _ ).
-
+	
 		$has_underscore = str_contains( $key, "_" ) ? true : false;
 
 		$key_render = $key;
@@ -72,15 +75,13 @@ function cfact_topic_type_counter( $lesson_id, $course_id, $user_id ) {
 			$key_render = $key_arr[0] . " " . $key_arr[1];
 
 		}
-
 		
-
 		?>
-		<span class="ld-sep">|</span>
 		<span class="ld-item-component">
 			<?php echo esc_html( $value ); ?>
 			<?php echo esc_html( $key_render ); ?>            
 		</span>
+		<span class="ld-sep">|</span>
 		<?php
 	endforeach;
 }
@@ -165,3 +166,28 @@ function cfact_topic_type_counter_style() {
 }
 
 
+// Este codigo se insertara despues del listing de contenido del curso.
+add_action("learndash-course-listing-after" , "edit_course_template");
+function edit_course_template(){
+	?>
+
+	<script>
+
+		const cfact_ld_topic_itemo_for_delete = document.querySelectorAll(".ld-item-list-items .ld-item-name .ld-item-components > span");
+
+		for (let index = 0; index < cfact_ld_topic_itemo_for_delete.length; index++) {
+
+			const element = cfact_ld_topic_itemo_for_delete[index];
+
+			if( element.textContent.includes("Topics") ){
+				//console.log(element.textContent);
+				element.style.display = "none";
+				cfact_ld_topic_itemo_for_delete[index - 1].style.display = "none";
+			}
+			
+		}
+
+	</script>
+
+	<?php
+}
