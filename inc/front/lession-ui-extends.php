@@ -53,16 +53,23 @@ function cfact_topic_type_counter( $lesson_id, $course_id, $user_id ) {
 
 		$has_underscore = str_contains( $key, "_" ) ? true : false;
 
+		$key_render = $key;
+
+		// Sí Hay solo un topic.
+		$singular = $value === 1 ? true : false;
+
+		// Sí el topic NO es sigular añade una "s" al final.
+		if( ! $singular ){
+			$key_render = $key . "s";
+		}
+
+		// Si lleva guion bajo.
 		if ( $has_underscore ) {
 
 			// Divide $key en base a el caracter ( _ )
 			$key_arr = explode( "_", $key );
 
 			$key_render = $key_arr[0] . " " . $key_arr[1];
-
-		}else{
-
-			$key_render = $key;
 
 		}
 
