@@ -114,11 +114,12 @@ function cfact_topic_type_icon( $topic_id, $course_id, $user_id ) {
 
 	if ( false !== $icon ) {
 
-		$url_base = get_site_url() . '/wp-content/plugins/coursefactory-integration/inc/img/';
+		$url_base = CFACT_PLUGIN_URL . "inc/img/";
 
 		?>
 		<img class="icon-topic-type" src="<?php echo esc_url( $url_base . $icon ); ?>" />
 		<?php
+
 
 	}
 }
@@ -132,7 +133,7 @@ add_action( 'wp_enqueue_scripts', 'cfact_topic_type_counter_style' );
  */
 function cfact_topic_type_counter_style() {
 
-	$url_base = get_site_url() . '/wp-content/plugins/coursefactory-integration/inc/css/custom.css';
+	$url_base = CFACT_PLUGIN_URL . 'inc/css/custom.css';
 
 	wp_enqueue_style( 'cfact_custom_style', $url_base );
 }
