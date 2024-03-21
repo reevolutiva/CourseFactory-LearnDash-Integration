@@ -7,7 +7,6 @@
  * @package Course Factory Integration.
  */
 
-//add_action( 'learndash-lesson-components-after', 'cfact_topic_type_counter', 10, 3 );
 add_action( 'learndash-lesson-components-before', 'cfact_topic_type_counter', 10, 3 );
 
 /**
@@ -45,37 +44,35 @@ function cfact_topic_type_counter( $lesson_id, $course_id, $user_id ) {
 	// Esta lista es la que ha de ser recorrida.
 	$lista = array_count_values( $custom_topics );
 
-	
-
 	// Recorro la lista.
 	foreach ( $lista as $key => $value ) :
 
 		if ( '' === $key ) {
 			$key = 'topic';
 		}
-	
-		$has_underscore = str_contains( $key, "_" ) ? true : false;
+
+		$has_underscore = str_contains( $key, '_' ) ? true : false;
 
 		$key_render = $key;
 
 		// Sí Hay solo un topic.
-		$singular = $value === 1 ? true : false;
+		$singular = 1 === $value ? true : false;
 
 		// Sí el topic NO es sigular añade una "s" al final.
-		if( ! $singular ){
-			$key_render = $key . "s";
+		if ( ! $singular ) {
+			$key_render = $key . 's';
 		}
 
 		// Si lleva guion bajo.
 		if ( $has_underscore ) {
 
 			// Divide $key en base a el caracter ( _ ).
-			$key_arr = explode( "_", $key );
+			$key_arr = explode( '_', $key );
 
-			$key_render = $key_arr[0] . " " . $key_arr[1];
+			$key_render = $key_arr[0] . ' ' . $key_arr[1];
 
 		}
-		
+
 		?>
 		<span class="ld-item-component">
 			<?php echo esc_html( $value ); ?>
@@ -141,12 +138,11 @@ function cfact_topic_type_icon( $topic_id, $course_id, $user_id ) {
 
 	if ( false !== $icon ) {
 
-		$url_base = CFACT_PLUGIN_URL . "inc/img/";
+		$url_base = CFACT_PLUGIN_URL . 'inc/img/';
 
 		?>
 		<img class="icon-topic-type" src="<?php echo esc_url( $url_base . $icon ); ?>" />
 		<?php
-
 
 	}
 }
@@ -167,8 +163,14 @@ function cfact_topic_type_counter_style() {
 
 
 // Este codigo se insertara despues del listing de contenido del curso.
-add_action("learndash-course-listing-after" , "edit_course_template");
-function edit_course_template(){
+add_action( 'learndash-course-listing-after', 'edit_course_template' );
+
+/**
+ * Esta funcion introduce a la UI de LearnDash un script JS que oculta el contador de topicos.
+ *
+ * @return void
+ */
+function edit_course_template() {
 	?>
 
 	<script>
@@ -180,7 +182,6 @@ function edit_course_template(){
 			const element = cfact_ld_topic_itemo_for_delete[index];
 
 			if( element.textContent.includes("Topics") ){
-				//console.log(element.textContent);
 				element.style.display = "none";
 				cfact_ld_topic_itemo_for_delete[index - 1].style.display = "none";
 			}
