@@ -43,6 +43,7 @@ function cousefact_backend_i18n() {
 		'create_a_new_copilot'                     => __( 'Create a new AI CoPilot account for free.', 'coursefactory-integration' ),
 		'our_user_your_exist'                      => __( 'Or use your existing CourseFactory.ai account.', 'coursefactory-integration' ),
 		'welcome_to'                               => __( 'Welcome to', 'coursefactory-integration' ),
+		'where_to_find_api_key' => __( 'Were to find api key', 'coursefactory-integration' ),
 		'course_factory_integration_for_learndash' => __( 'CourseFactory Integration for LearnDash', 'coursefactory-integration' ),
 		'unlock_the_power'                         => __( 'Unlock the power of AI in course creation with CourseFactory, now seamlessly integrated with LearnDash. Follow these simple steps to get started:.', 'coursefactory-integration' ),
 	);

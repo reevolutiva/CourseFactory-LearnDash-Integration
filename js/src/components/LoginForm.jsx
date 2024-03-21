@@ -56,7 +56,7 @@ const LoginForm = () => {
             <section>
                 <h3>{bakendi18n.insert_your_api_key}</h3>
                 <a target="_blank" href="https://cob.coursefactory.net/login">
-                    <p>{bakendi18n.where_to_fin_api}</p>
+                    <p>{bakendi18n.where_to_find_api_key}</p>
                 </a>
             </section> 
             <form method="GET" action={`${location.origin}/wp-admin/admin.php?`}>

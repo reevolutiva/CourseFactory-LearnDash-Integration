@@ -12,7 +12,7 @@
     "src": "js/src/assets/vite.svg"
   },
   "js/src/main.css": {
-    "file": "assets/main-e53739f4.css",
+    "file": "assets/main-0e42df32.css",
     "src": "js/src/main.css"
   },
   "js/src/main.jsx": {
@@ -22,9 +22,9 @@
       "assets/Logo_BG_black-5184e74a.png"
     ],
     "css": [
-      "assets/main-e53739f4.css"
+      "assets/main-0e42df32.css"
     ],
-    "file": "assets/main-155208fc.js",
+    "file": "assets/main-a8d868b3.js",
     "isEntry": true,
     "src": "js/src/main.jsx"
   }

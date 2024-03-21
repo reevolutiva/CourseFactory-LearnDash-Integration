@@ -1,9 +1,15 @@
+.blur-block *{
+    filter: blur(4px);
+}
+
 .AppBack, .load-modal, .LoginPopUp{
     max-width: 1280px;
     margin: 0 auto;
     padding: 2rem;
 
     @import './_gscboostrap.scss';   
+
+  
 
     .cfact-color{
         background-color: #ECE9E5;

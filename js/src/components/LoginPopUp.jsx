@@ -1,11 +1,17 @@
 import "../styles/LoginPopUp.scss";
 import logo from "../../public/Logo_BG_black.png";
+import { useEffect } from "react";
 
 const LoginPopUp = () => {
 
     function hiddenModal(){
         document.querySelector(".LoginPopUp-contain").style.display = "none";
+        document.querySelector("#cfact_login").classList.remove("blur-block");
     }
+
+    useEffect( () => {
+        document.querySelector("#cfact_login").classList.add("blur-block");
+    } ,[]);
 
     return ( 
     <div className="LoginPopUp-contain" >
