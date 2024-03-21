@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import AppBack from './AppBack';
 import LoginForm from "./components/LoginForm";
+import LoginPopUp from "./components/LoginPopUp";
 
 if(document.getElementById('my-front')){
 	ReactDOM.createRoot(document.getElementById('my-front')).render(
@@ -19,6 +20,12 @@ if(document.getElementById('cfact_list')){
 if(document.getElementById('cfact_login')){
 	ReactDOM.createRoot(document.getElementById('cfact_login')).render(
 		<LoginForm />
+	);
+}
+
+if(document.getElementById('cfact_login_popup')){
+	ReactDOM.createRoot(document.getElementById('cfact_login_popup')).render(
+		<LoginPopUp />
 	);
 }
 

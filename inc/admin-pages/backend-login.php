@@ -6,8 +6,12 @@
  * @package Course Factory Integration
  */
 
+if( ! $api_key ){
+    echo '<div id="cfact_login_popup"></div>';
+}
 
-if ( isset( $_GET['set-api_key'] ) && isset( $_GET['api-key'] ) ) {
+
+if ( isset( $_GET['set-api_key'] ) && isset( $_GET['api-key'] ) && ! empty( $_GET['api-key'] ) ) {
 
 		
     $api_key_data    = sanitize_text_field( wp_unslash( $_GET['api-key'] ) );

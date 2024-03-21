@@ -1,4 +1,4 @@
-.AppBack, .load-modal{
+.AppBack, .load-modal, .LoginPopUp{
     max-width: 1280px;
     margin: 0 auto;
     padding: 2rem;
@@ -15,9 +15,22 @@
         background-color: #6b6b6b;
     }
 
+    .btn-cfact-ghost{
+        background-color: transparent;
+        color: #6b6b6b !important;
+    }
+
     .btn-cfact{
         background-color: #000;
         border-radius: 40px;
+        text-decoration: underline;
+
+        &:hover{
+            background-color: transparent;
+            color: #000 !important;
+            outline: 2px solid #000;
+            text-decoration: underline;
+        }
     }
 
     #course-import-loader-bar{

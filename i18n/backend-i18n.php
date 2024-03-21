@@ -39,7 +39,12 @@ function cousefact_backend_i18n() {
 		'new_project'                => __( 'New Project', 'coursefactory-integration' ),
 		'keepme_informed'            => __( 'Keep me  informed about new updates', 'coursefactory-integration' ),
 		'do_you_want_redirected'     => __('Do you want to be redirected as a course importer?', 'coursefactory-integration'),
-		'you_mail_has_registered'     => __('Your email has been registered to keep you informed about CourseFactory updates.', 'coursefactory-integration')
+		'you_mail_has_registered'     => __('Your email has been registered to keep you informed about CourseFactory updates.', 'coursefactory-integration'),
+		'create_a_new_copilot'     => __('Create a new AI CoPilot account for free.', 'coursefactory-integration'),
+		'our_user_your_exist'     => __('Or use your existing CourseFactory.ai account.', 'coursefactory-integration'),
+		'welcome_to'     => __('Welcome to', 'coursefactory-integration'),
+		'course_factory_integration_for_learndash'     => __('CourseFactory Integration for LearnDash', 'coursefactory-integration'),
+		'unlock_the_power'     => __('Unlock the power of AI in course creation with CourseFactory, now seamlessly integrated with LearnDash. Follow these simple steps to get started:.', 'coursefactory-integration')
 	);
 
 	return $backend_i18n;
