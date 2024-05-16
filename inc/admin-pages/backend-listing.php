@@ -108,6 +108,25 @@ if ( $req_proyects->data ) {
 				}
 			}
 		}
+
+		if( $pages_number >= 2 && is_float( $pages_number )){
+
+			$limit = round( $pages_number, 0 , PHP_ROUND_HALF_UP) ;
+
+			# Se hacem tamtas peticiones como $paginas existan.
+			for ($i=0; $i < $limit ; $i++) { 
+
+				// El $offset se calcula multiplicando el limite por el numero de iteracion.
+				$offset = $pagination->limit * $i;
+
+				$aditional_req_proyects = cfac_get_list_proyects( $api_key, $offset  );
+				$aditional_req_proyects = json_decode( $aditional_req_proyects );
+
+				foreach ($aditional_req_proyects->data as $item ) {
+					array_push( $proyects, $item );
+				}
+			}
+		}
 	}	
 
 
