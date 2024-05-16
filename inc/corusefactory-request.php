@@ -37,13 +37,15 @@ function cfac_get_content( $api_key, $content_id ) {
 /**
  * Esta function obtiene una lista de todos los proyectos asociados a una cuenta de coursefactory que esta haciendo la peticion.
  *
- * @param string $api_key Api Key de Course Factory.
- * @return mixed
+ * @param [type] $api_key
+ * @param integer $offset
+ * @param integer $limit
+ * @return array
  */
-function cfac_get_list_proyects( $api_key ) {
+function cfac_get_list_proyects( $api_key, $offset = 0 , $limit = 20 ) {
 
 	$req = wp_remote_get(
-		'https://cob.coursefactory.net/outline-builder/api/public/project/',
+		'https://cob.coursefactory.net/outline-builder/api/public/project/?limit='. $limit .'&offset='. $offset,
 		array(
 			'headers' => array(
 				'Authorization' => "Token $api_key",
