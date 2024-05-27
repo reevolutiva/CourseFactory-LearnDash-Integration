@@ -17,12 +17,15 @@ if ( isset( $_GET['delete-api_key'] ) ) {
 	cfact_ld_api_key_mannger( 'delete' );
 	?>
 	
-	#TODO: (AIDER) Redirecion con PHP
+	#TODO: (AIDER/) redirecciona la url que defino en la linea de abajo usando la funcion wp_redirect.
+	
 	<script>
 		location.href = `${location.origin}/wp-admin/admin.php?page=course_factory_integration`;
 	</script>
 	<?php
 	die();
+	
+	#(/AIDER)
 
 }
 
