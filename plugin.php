@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: CourseFactory LearnDash Integration #PROD
+ * Plugin Name: CourseFactory LearnDash Integration
  * Description: A integration CourseFactory Course creator.
  * Author: Reevolutiva
  * Author URI: https://reevolutiva.cl

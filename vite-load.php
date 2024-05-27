@@ -1,7 +1,7 @@
 <?php
 /**
  * Path: app\public\wp-content\plugins\coursefactory-integration\vite-load.php
- * este archivo encola composer e /inc/enqueue.php
+ * este archivo encola el codigo REACT del FrontEnd.
  *
  * @package Course Factory Integration */
 
