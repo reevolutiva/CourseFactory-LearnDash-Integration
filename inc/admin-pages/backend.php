@@ -1,7 +1,7 @@
 <?php
 /**
  *  Path: wp-content/plugins/coursefactory-integration/inc/admin-pages/backend.php.
- *  Este archivo contiene el codigo de la pagina de admistracion de coursefactory.
+ *  Este archivo contiene el codigo de la pagina de administracion de coursefactory.
  *
  * @package Course Factory Integration
  */
@@ -13,21 +13,15 @@ wp_localize_script( 'cfact-backend-script', 'cfact_backend_i18n', $backend_i18n 
 
 // Seccion donde se elimina el APIKEY de course factory.
 if ( isset( $_GET['delete-api_key'] ) ) {
-
 	cfact_ld_api_key_mannger( 'delete' );
-	?>
-	<script>
-		location.href = `${location.origin}/wp-admin/admin.php?page=course_factory_integration`;
-	</script>
-	<?php
-	die();
+	wp_redirect( admin_url( 'admin.php?page=course_factory_integration' ) );
+	exit;
 
-	#TODO: (AIDER/) redirecciona la url que defino en la linea de abajo usando la funcion wp_redirect.
-
-	#(/AIDER)
+	#TODO: (AIDER/)
 
 }
 
 // Seccion de listing.
 if ( $api_key && ! isset( $_GET['cfact_view_config'] ) ) {
 	require 'backend-listing.php';
+}
