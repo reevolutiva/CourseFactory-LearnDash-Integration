@@ -29,3 +29,4 @@ dist-ssr
 /vendor
 course-log.json
 
+.aider*

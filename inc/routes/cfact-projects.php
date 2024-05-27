@@ -138,7 +138,7 @@ function cfact_projects_import_callback( $request ) {
 		$proyecto = cfac_get_proyect_version( $api_key, $project_import_id, $default_version_id );
 		$proyecto = json_decode( $proyecto );
 
-		$course_id = r33v_ld_course_importer( $proyecto, $proyect_meta );
+		$course_id = cfact_ld_course_importer( $proyecto, $proyect_meta );
 
 		if ( is_array( $course_id ) ) {
 			$course_id = $course_id[1];
