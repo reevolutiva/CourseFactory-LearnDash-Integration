@@ -25,7 +25,7 @@ function bloginfo_array() {
 	return $data;
 }
 
-$backend_i18n = cousefact_backend_i18n();
+$backend_i18n = cfact_backend_i18n();
 
 ?>
 <script>
