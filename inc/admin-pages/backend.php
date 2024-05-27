@@ -26,3 +26,11 @@ if ( isset( $_GET['delete-api_key'] ) ) {
 if ( $api_key && ! isset( $_GET['cfact_view_config'] ) ) {
 	require 'backend-listing.php';
 }
+
+
+// Seccion para logearse en course-factory.
+if ( ! isset($api_key) || isset( $_GET['cfact_view_config'] ) ) {
+	require 'backend-login.php';
+}
+
+

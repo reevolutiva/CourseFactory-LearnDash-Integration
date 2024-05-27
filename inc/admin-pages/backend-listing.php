@@ -106,5 +106,5 @@ if ( isset( $req_proyects->data ) ) {
 }
 
 // Add the API key variable at the beginning of the file
-$api_key = 'your_api_key_here';
+#$api_key = 'your_api_key_here';
 
