@@ -57,6 +57,9 @@ The plugin uses CourseFactory's AI algorithms to analyze your content preference
 = 1.0 =
 Initial release.
 
+== Thirdparty services ==
+*
+
 == SOURCE CODE ==
 * Here is the source code of the plugin with the uncompiled JS and CSS https://github.com/reevolutiva/coursefactory-integration
 
