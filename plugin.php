@@ -20,14 +20,14 @@ define( 'CFACT_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
 define( 'CFACT_PLUGIN_VAR_NAME', 'cfact-learndash-integration' );
 
-add_action( 'admin_menu', 'course_factory_integration_init_menu' );
+add_action( 'admin_menu', 'cfact_init_menu' );
 
 /**
  * Init Admin Menu.
  *
  * @return void
  */
-cfact_init_menu() {
+function cfact_init_menu() {
 
 	$icon_url = plugin_dir_url( __FILE__ ) . '/js/public/Logo.png';
 
@@ -39,7 +39,7 @@ cfact_init_menu() {
 		__( 'Course Factory', 'course_factory_integration' ),
 		'manage_options',
 		'course_factory_integration',
-		'course_factory_integration_admin_page',
+		'cfact_admin_page',
 		$icon_url,
 		'2.1'
 	);
@@ -50,7 +50,7 @@ cfact_init_menu() {
  *
  * @return void
  */
-cfact_admin_page() {
+function cfact_admin_page() {
 	require_once plugin_dir_path( __FILE__ ) . 'inc/admin-pages/backend.php';
 }
 
@@ -93,14 +93,14 @@ function cfact_get_client_data() {
 
 
 // Cuando este plugin se active.
-register_activation_hook( __FILE__, 'course_factory_integration_activation' );
+register_activation_hook( __FILE__, 'cfact_activation' );
 
 /**
  * Cuando este plugin se active.
  *
  * @return void
  */
-cfact_activation() {
+function cfact_activation() {
 
 	// Verfica si learnDash esta instalado.
 
@@ -131,14 +131,14 @@ cfact_activation() {
 }
 
 // Cuando este plugin se desactive.
-register_deactivation_hook( __FILE__, 'course_factory_integration_deactivation' );
+register_deactivation_hook( __FILE__, 'cfact_deactivation' );
 
 /**
  * Esta funcion se ejecuta cuando este plugin se desactive.
  *
  * @return void
  */
-cfact_deactivation() {
+function cfact_deactivation() {
 	// Enviar weebhook a CourseFactory para que sepa que este plugin esta instalado.
 	cfact_integration_send_stadistic( 'diactivation' );
 }
