@@ -90,26 +90,6 @@ function cfact_get_client_data() {
 		return $args;
 }
 
-/**
- * Esta funcion retorna la cookie de login de WordPress.
- *
- * @return string Retorna la cookie de login de WordPress.
- */
-function cfact_get_wp_cookie() {
-	// Obtnego cookie de la API.
-	$cookie = array_filter(
-		$_COOKIE,
-		function ( $key ) {
-			return strpos( $key, 'wordpress_logged_in_' ) !== false;
-		},
-		ARRAY_FILTER_USE_KEY
-	);
-
-	$logged_cookie = wp_json_encode( $cookie );
-	$logged_cookie = str_replace( array( ':', '"', '}', '{' ), '', $logged_cookie );
-
-	return $logged_cookie;
-}
 
 
 // Cuando este plugin se active.
