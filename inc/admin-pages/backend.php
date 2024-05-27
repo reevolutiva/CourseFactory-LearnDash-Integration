@@ -66,4 +66,6 @@ if ( ! $api_key || isset( $_GET['cfact_view_config'] ) ) {
 	require 'backend-login.php';
 }
 
+wp_enqueue_script( 'backend-script', plugins_url( 'backend.js', __FILE__ ), array( 'jquery'), true, false );
 
+// ... rest of the code ...

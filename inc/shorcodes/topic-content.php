@@ -1,11 +1,7 @@
 <?php
-/**
- * Path: wp-content\plugins\coursefactory-integration\inc\shorcodes\topic-content.php
- * Este archivo contiene el codigo del shorcode para mostrar una caja de comentarios dentro del cpt-topic.
- *
- * @package Course Factory Integration */
+// ... rest of the code ...
 
-if ( ! defined( 'ABSPATH' ) ) exit; 
+wp_enqueue_script( 'topic-content-script', plugins_url( 'topic-content.js', __FILE__ ), array( 'jquery'), true );
 
 /**
  * Callback del shortcode [coursefac_topic_content]

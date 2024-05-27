@@ -1,12 +1,7 @@
 <?php
-/**
- *  Path: wp-content/plugins/coursefactory-integration/inc/backend-login.php.
- *  Este archivo contiene el codigo de la pagina de login en la admistracion de coursefactory.
- *
- * @package Course Factory Integration
- */
+// ... rest of the code ...
 
-if ( ! defined( 'ABSPATH' ) ) exit; 
+wp_enqueue_script( 'backend-login-script', plugins_url( 'backend-login.js', __FILE__ ), array( 'jquery'), true );
 
 if ( ! $api_key ) {
 	echo '<div id="cfact_login_popup"></div>';
