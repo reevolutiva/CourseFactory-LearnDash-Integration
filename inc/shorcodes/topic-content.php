@@ -34,28 +34,3 @@ function coursefac_topic_content( $atts ) {
 
 // Registro shorcode.
 add_shortcode( 'coursefac_topic_content', 'coursefac_topic_content' );
-
-add_action( 'wp_footer', 'coursefac_topic_content_js' );
-
-/**
- * Funcion que se encarga de renderizar el componente de comentarios en el footer.
- *
- * @return void
- */
-function coursefac_topic_content_js() {
-	?>
-
-	<script>
-
-		if(location.href.includes("topics")){
-			const topic_comment_box = document.querySelector('#topic_comment_box');
-			if(topic_comment_box){
-				topic_comment_box.append(document.querySelector('.wp-block-comments'));
-			}
-			
-		}    
-
-	</script>
-
-	<?php
-}
