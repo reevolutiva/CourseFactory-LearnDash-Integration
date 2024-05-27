@@ -34,17 +34,7 @@ function coursefac_course_data( $atts ) {
 	$cfact_project_meta         = unserialize( $cfact_project_meta );
 	$cfact_project_outcome_list = unserialize( $cfact_project_outcome_list );
 
-	$css = '.coursefac_course_data ol{
-        list-style-type: upper-latin;
-
-    }
-    .coursefac_course_data ol ol{
-        list-style-type: decimal;
-    ';
-
-	$html = '<style>' . $css . '</style>';
-
-	$html .= "<div class='coursefac_course_data'>";
+	$html = "<div class='coursefac_course_data'>";
 
 	// MetaData del curso.
 	$goal_annotation  = $cfact_project_meta->goal_annotation;
