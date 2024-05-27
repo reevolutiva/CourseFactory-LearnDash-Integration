@@ -136,7 +136,3 @@ function save_cfact_project_fields( $post_id ) {
 add_action( 'save_post', 'save_cfact_project_fields' );
 
 
-
-
-
-
