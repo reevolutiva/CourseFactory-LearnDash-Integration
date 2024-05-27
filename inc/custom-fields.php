@@ -7,6 +7,8 @@
  * @package Course Factory Integration
  */
 
+if ( ! defined( 'ABSPATH' ) ) exit; 
+
 require 'custom_fields/courses.php';
 
 require 'custom_fields/topics.php';

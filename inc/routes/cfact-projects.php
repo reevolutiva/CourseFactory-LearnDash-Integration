@@ -6,6 +6,8 @@
  * @package Course Factory Integration
  */
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 // Regitro la ruta cfact-get-project para obtener la lista de proyectos desde CourseFactory.
 add_action(
 	'rest_api_init',

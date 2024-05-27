@@ -6,6 +6,9 @@
  * @package Course Factory Integration.
  */
 
+
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 // Aqui se registra el endpoint cfact-questions para crear preguntas en LearnDash desde la api de WordPress.
 add_action(
 	'rest_api_init',

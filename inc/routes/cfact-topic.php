@@ -6,6 +6,8 @@
  * @package Course Factory Integration.
  */
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 // Aqui se registra la ruta para añadir metadata de Coursefactory a un tema previamente importado desde CoruseFactory a LearnDash.
 add_action(
 	'rest_api_init',

@@ -6,6 +6,7 @@
  * @package Course Factory Integration
  */
 
+if ( ! defined( 'ABSPATH' ) ) exit; 
 
 
 $api_key = cfact_ld_api_key_mannger( 'get' );

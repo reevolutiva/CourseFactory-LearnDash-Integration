@@ -6,6 +6,8 @@
  *
  * @package Course Factory Itegration */
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 /**
  * Esta funcion se encarga de interpretar la respuesta de la API de Course Factory y de crear un curso en LearnDash.
  *

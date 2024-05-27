@@ -6,6 +6,8 @@
  * @package Course Factory Integration
  */
 
+if ( ! defined( 'ABSPATH' ) ) exit; 
+
 /**
  * Esta funcion registra el campo personalizado cfact_project_version_id, cfact_project_version, cfact_project_outcomes_list para los cursos de LearnDash.
  *

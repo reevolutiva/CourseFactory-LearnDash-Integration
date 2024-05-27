@@ -11,6 +11,8 @@
  *
  * @package Course Factory Integration */
 
+if ( ! defined( 'ABSPATH' ) ) exit; 
+
 /**
  * Esta funcion obtiene el contenido de un item de course factory una vez suministrado su content_id.
  *

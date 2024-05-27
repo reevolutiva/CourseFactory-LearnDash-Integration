@@ -6,6 +6,8 @@
  * @package Course Factory Integration
  */
 
+if ( ! defined( 'ABSPATH' ) ) exit; 
+
 // Listamos todos los proyectos.
 
 $req_proyects = cfac_get_list_proyects( $api_key );
