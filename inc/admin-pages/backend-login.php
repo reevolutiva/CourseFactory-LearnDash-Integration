@@ -35,6 +35,7 @@ if ( isset( $_GET['set-api_key'] ) && isset( $_GET['api-key'] ) && ! empty( $_GE
 		$body    = wp_remote_retrieve_body( $request );
 		$body    = json_decode( $body );
 
+		#TODO: (AIDER) redireccion con php.
 		if ( $body->success ) :
 
 			?>
