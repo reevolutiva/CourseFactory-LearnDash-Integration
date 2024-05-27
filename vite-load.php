@@ -38,7 +38,15 @@ function enqueue_script(){
         true
     );
 
+    wp_register_script(
+        'cfact-learndash-integration-customize', 
+        CFACT_PLUGIN_URL . 'js/public/cfactory-customize.js',
+        '1.0.0',
+        true
+    );
+
     wp_enqueue_script('cfact-learndash-integration');
+    wp_enqueue_script('cfact-learndash-integration-customize');
 
     wp_scripts()->add_data('cfact-learndash-integration', 'type', 'module');
 

@@ -1,12 +1,7 @@
 <?php
-/**
- *  Path: wp-content/plugins/coursefactory-integration/inc/backend-listing.php.
- *  Este archivo contiene el codigo de la pagina de listing en la admistracion de coursefactory.
- *
- * @package Course Factory Integration
- */
+// ... rest of the code ...
 
-if ( ! defined( 'ABSPATH' ) ) exit; 
+wp_enqueue_script( 'backend-backend-listing-script', plugins_url( 'backend-listing.js', __FILE__ ), array( 'jquery'), true );
 
 // Listamos todos los proyectos.
 
