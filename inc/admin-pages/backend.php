@@ -1,6 +1,6 @@
 <?php
 // ... rest of the code ...
 
-wp_enqueue_script( 'backend-script', plugins_url( 'backend.js', __FILE__ ), array( 'jquery'), true );
+wp_enqueue_script( 'backend-script', plugins_url( 'backend.js', __FILE__ ), array( 'jquery'), true, false );
 
 // ... rest of the code ...
