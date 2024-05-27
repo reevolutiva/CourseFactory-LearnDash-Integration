@@ -95,7 +95,7 @@ function cfact_get_client_data() {
  *
  * @return string Retorna la cookie de login de WordPress.
  */
-function get_wp_cookie() {
+function r33v_get_wp_cookie() {
 	// Obtnego cookie de la API.
 	$cookie = array_filter(
 		$_COOKIE,

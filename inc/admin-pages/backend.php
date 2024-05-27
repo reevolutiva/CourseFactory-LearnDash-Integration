@@ -6,7 +6,7 @@
  * @package Course Factory Integration
  */
 
-$cookie = get_wp_cookie();
+$cookie = r33v_get_wp_cookie();
 
 
 $api_key = cfact_ld_api_key_mannger( 'get' );
