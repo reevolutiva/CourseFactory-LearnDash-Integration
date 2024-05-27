@@ -15,12 +15,13 @@ wp_localize_script( 'cfact-learndash-integration', 'bakendi18n', $backend_i18n )
 // Seccion donde se elimina el APIKEY de course factory.
 
 #TODO: (AIDER/) - "Fix Here".
-if ( isset( $_GET['delete-api_key'] ) ) {
-	#cfact_ld_api_key_mannger( 'delete' );
-	wp_redirect( admin_url( 'admin.php?page=course_factory_integration' ) );
-	exit;
-
-}
+add_action('admin_init', function() {
+    if ( isset( $_GET['delete-api_key'] ) ) {
+        #cfact_ld_api_key_mannger( 'delete' );
+        wp_redirect( admin_url( 'admin.php?page=course_factory_integration' ) );
+        exit;
+    }
+});
 #(/AIDER)
 
 // Seccion de listing.
