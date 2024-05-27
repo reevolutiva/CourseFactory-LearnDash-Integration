@@ -163,34 +163,3 @@ function cfact_topic_type_counter_style() {
 	wp_enqueue_style( 'cfact_custom_style', $url_base );
 }
 
-
-// Este codigo se insertara despues del listing de contenido del curso.
-add_action( 'learndash-course-listing-after', 'edit_course_template' );
-
-/**
- * Esta funcion introduce a la UI de LearnDash un script JS que oculta el contador de topicos.
- *
- * @return void
- */
-function edit_course_template() {
-	?>
-
-	<script>
-
-		const cfact_ld_topic_itemo_for_delete = document.querySelectorAll(".ld-item-list-items .ld-item-name .ld-item-components > span");
-
-		for (let index = 0; index < cfact_ld_topic_itemo_for_delete.length; index++) {
-
-			const element = cfact_ld_topic_itemo_for_delete[index];
-
-			if( element.textContent.includes("Topics") ){
-				element.style.display = "none";
-				cfact_ld_topic_itemo_for_delete[index - 1].style.display = "none";
-			}
-			
-		}
-
-	</script>
-
-	<?php
-}
