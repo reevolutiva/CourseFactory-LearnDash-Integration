@@ -7,6 +7,8 @@
  * @package Course Factory Integration.
  */
 
+if ( ! defined( 'ABSPATH' ) ) exit; 
+
 add_action( 'learndash-lesson-components-before', 'cfact_topic_type_counter', 10, 3 );
 
 /**

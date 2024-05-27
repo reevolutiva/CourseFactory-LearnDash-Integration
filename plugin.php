@@ -11,6 +11,8 @@
  * @package Course Factory Integration
  */
 
+
+
 require 'inc/course-fact-stadistic.php';
 require 'inc/front/lession-ui-extends.php';
 
@@ -20,14 +22,14 @@ define( 'CFACT_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
 define( 'CFACT_PLUGIN_VAR_NAME', 'cfact-learndash-integration' );
 
-add_action( 'admin_menu', 'course_factory_integration_init_menu' );
+add_action( 'admin_menu', 'cfact_init_menu' );
 
 /**
  * Init Admin Menu.
  *
  * @return void
  */
-function course_factory_integration_init_menu() {
+function cfact_init_menu() {
 
 	$icon_url = plugin_dir_url( __FILE__ ) . '/js/public/Logo.png';
 
@@ -39,7 +41,7 @@ function course_factory_integration_init_menu() {
 		__( 'Course Factory', 'course_factory_integration' ),
 		'manage_options',
 		'course_factory_integration',
-		'course_factory_integration_admin_page',
+		'cfact_admin_page',
 		$icon_url,
 		'2.1'
 	);
@@ -50,7 +52,7 @@ function course_factory_integration_init_menu() {
  *
  * @return void
  */
-function course_factory_integration_admin_page() {
+function cfact_admin_page() {
 	require_once plugin_dir_path( __FILE__ ) . 'inc/admin-pages/backend.php';
 }
 
@@ -90,37 +92,17 @@ function cfact_get_client_data() {
 		return $args;
 }
 
-/**
- * Esta funcion retorna la cookie de login de WordPress.
- *
- * @return string Retorna la cookie de login de WordPress.
- */
-function get_wp_cookie() {
-	// Obtnego cookie de la API.
-	$cookie = array_filter(
-		$_COOKIE,
-		function ( $key ) {
-			return strpos( $key, 'wordpress_logged_in_' ) !== false;
-		},
-		ARRAY_FILTER_USE_KEY
-	);
-
-	$logged_cookie = wp_json_encode( $cookie );
-	$logged_cookie = str_replace( array( ':', '"', '}', '{' ), '', $logged_cookie );
-
-	return $logged_cookie;
-}
 
 
 // Cuando este plugin se active.
-register_activation_hook( __FILE__, 'course_factory_integration_activation' );
+register_activation_hook( __FILE__, 'cfact_activation' );
 
 /**
  * Cuando este plugin se active.
  *
  * @return void
  */
-function course_factory_integration_activation() {
+function cfact_activation() {
 
 	// Verfica si learnDash esta instalado.
 
@@ -151,14 +133,14 @@ function course_factory_integration_activation() {
 }
 
 // Cuando este plugin se desactive.
-register_deactivation_hook( __FILE__, 'course_factory_integration_deactivation' );
+register_deactivation_hook( __FILE__, 'cfact_deactivation' );
 
 /**
  * Esta funcion se ejecuta cuando este plugin se desactive.
  *
  * @return void
  */
-function course_factory_integration_deactivation() {
+function cfact_deactivation() {
 	// Enviar weebhook a CourseFactory para que sepa que este plugin esta instalado.
 	cfact_integration_send_stadistic( 'diactivation' );
 }

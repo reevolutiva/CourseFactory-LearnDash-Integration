@@ -6,6 +6,8 @@
  * @package Course Factory Integration
  */
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 require 'routes/cfact-curso.php';
 
 require 'routes/cfact-projects.php';

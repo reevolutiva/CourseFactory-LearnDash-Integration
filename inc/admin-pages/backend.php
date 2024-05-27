@@ -6,7 +6,7 @@
  * @package Course Factory Integration
  */
 
-$cookie = get_wp_cookie();
+if ( ! defined( 'ABSPATH' ) ) exit; 
 
 
 $api_key = cfact_ld_api_key_mannger( 'get' );
@@ -25,7 +25,7 @@ function bloginfo_array() {
 	return $data;
 }
 
-$backend_i18n = cousefact_backend_i18n();
+$backend_i18n = cfact_backend_i18n();
 
 ?>
 <script>
@@ -36,7 +36,6 @@ const cfact_blog_info = <?php echo wp_json_encode( bloginfo_array() ); ?>;
 const cfact_current_user = <?php echo wp_json_encode( wp_get_current_user() ); ?>; 
 const CFACT_PLUGIN_URL_COURSE_LOG ="<?php echo esc_url( plugins_url( 'coursefactory-integration/course-log.json' ) ); ?>"; 
 let cfact_learndash_integration_apiKey = "<?php echo esc_html( $api_key ); ?>";
-const wpApiCookie = "<?php echo esc_html( $cookie ); ?>";
 
 </script>
 <?php

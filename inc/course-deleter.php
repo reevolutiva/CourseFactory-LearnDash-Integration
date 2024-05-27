@@ -6,6 +6,8 @@
  *
  * @package Course Factory Integration */
 
+if ( ! defined( 'ABSPATH' ) ) exit; 
+
 /**
  * Esta funcion se encaragara de eliminar un CPT Curso, con sus respectivos CPT Lession, Topic, Quiz, Question
  * a partir del post_id de CPT Course.

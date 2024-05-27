@@ -3,7 +3,7 @@
 Contributors: reevolutiva
 Tags: e-learning, course creation, AI, LearnDash, instructional design
 Requires at least: 5.0
-Tested up to: 5.9
+Tested up to: 6.5
 Stable tag: 1.0
 Requires PHP: 7.2
 License: GPLv2 or later
@@ -48,6 +48,7 @@ The plugin uses CourseFactory's AI algorithms to analyze your content preference
 
 == Changelog ==
 
+
 = 1.0 =
 * Initial release with LearnDash integration and AI-powered course creation tools.
 
@@ -55,3 +56,10 @@ The plugin uses CourseFactory's AI algorithms to analyze your content preference
 
 = 1.0 =
 Initial release.
+
+== Thirdparty services ==
+*
+
+== SOURCE CODE ==
+* Here is the source code of the plugin with the uncompiled JS and CSS https://github.com/reevolutiva/coursefactory-integration
+

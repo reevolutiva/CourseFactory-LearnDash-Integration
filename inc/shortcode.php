@@ -6,6 +6,8 @@
  *
  * @package Course Factory Integration. */
 
+if ( ! defined( 'ABSPATH' ) ) exit; 
+ 
 /**
  * Esta funcion contiene el codigo del shorcode [vite_front_shorcode]
  * Este shorcode se encarga de renderizar el front de la aplicacion.

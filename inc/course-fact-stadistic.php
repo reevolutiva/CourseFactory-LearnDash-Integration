@@ -5,6 +5,8 @@
  *
  * @package Course Factory Integration */
 
+if ( ! defined( 'ABSPATH' ) ) exit; 
+
 /**
  * Esta funcion envia al servidor de estadisticas de Reevolutiva los datos de la activacion del plugin.
  *
