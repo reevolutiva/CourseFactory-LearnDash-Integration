@@ -27,6 +27,7 @@ function bloginfo_array() {
 
 $backend_i18n = cfact_backend_i18n();
 
+#TODO: (AIDER) Cambiar esto por wp_add_inline_script.
 ?>
 <script>
 // Aquí entrego las varaiabels desde PHP hacia REACT JS.
@@ -45,6 +46,8 @@ if ( isset( $_GET['delete-api_key'] ) ) {
 
 	cfact_ld_api_key_mannger( 'delete' );
 	?>
+	
+	#TODO: (AIDER) Redirecion con PHP
 	<script>
 		location.href = `${location.origin}/wp-admin/admin.php?page=course_factory_integration`;
 	</script>
