@@ -8,38 +8,8 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; 
 
-
-$api_key = cfact_ld_api_key_mannger( 'get' );
-
-/**
- * Esta funcion retorna un array con los siguientes datos del WordPress del usuario: 'name', 'description', 'url', 'admin_email', 'language
- *
- * @return string
- */
-function bloginfo_array() {
-	$fields = array( 'name', 'description', 'url', 'admin_email', 'language' );
-	$data   = array();
-	foreach ( $fields as $field ) {
-		$data[ $field ] = get_bloginfo( $field );
-	}
-	return $data;
-}
-
-$backend_i18n = cfact_backend_i18n();
-
-#TODO: (AIDER) Cambiar esto por wp_add_inline_script.
-?>
-<script>
-// Aquí entrego las varaiabels desde PHP hacia REACT JS.
-const bakendi18n = <?php echo wp_json_encode( $backend_i18n ); ?>;
-let req_project_list = false;
-const cfact_blog_info = <?php echo wp_json_encode( bloginfo_array() ); ?>;
-const cfact_current_user = <?php echo wp_json_encode( wp_get_current_user() ); ?>; 
-const CFACT_PLUGIN_URL_COURSE_LOG ="<?php echo esc_url( plugins_url( 'coursefactory-integration/course-log.json' ) ); ?>"; 
-let cfact_learndash_integration_apiKey = "<?php echo esc_html( $api_key ); ?>";
-
-</script>
-<?php
+wp_enqueue_script( 'cfact-backend-script', plugins_url( 'coursefactory-integration/js/backend.js', __FILE__ ), array( 'jquery' ), '1.0.0', true );
+wp_localize_script( 'cfact-backend-script', 'cfact_backend_i18n', $backend_i18n );
 
 // Seccion donde se elimina el APIKEY de course factory.
 if ( isset( $_GET['delete-api_key'] ) ) {
@@ -63,7 +33,6 @@ if ( $api_key && ! isset( $_GET['cfact_view_config'] ) ) {
 
 // Seccion para logearse en course-factory.
 if ( ! $api_key || isset( $_GET['cfact_view_config'] ) ) {
-	require 'backend-login.php';
+	require 'backend-login.login.php';
 }
-
 
