@@ -16,7 +16,7 @@ $req_proyects = json_decode( $req_proyects );
 $proyectos = array();
 
 // Calculamos cuantas veces debe iterar para hacer fetch de todo.
-if( $req_proyects->pagination ){
+if( isset( $req_proyects->pagination ) ){
 	$pagination = $req_proyects->pagination;
 
 	if( $pagination->limit === $pagination->offset ){
@@ -65,13 +65,13 @@ if( $req_proyects->pagination ){
 }
 
 // Obtenemos el id de cada proyecto y mediante ese ID Listamos todas las verciones de ese proyecto.
-if ( $req_proyects->data ) {
+if ( isset( $req_proyects->data ) ) {
 	$proyectos = $req_proyects->data;
 
 	// Buscamos en wp_postmeta un post_id que tenga el meta_key = cfact_project_version_id y el meta_value = id del proyecto.
 	// Si lo encontramos es que hay un curso importado con ese proyecto. y si no lo encontramos es que no hay un curso importado con ese proyecto.
 	$proyectos = array_map(
-		function ( $e ) {
+		function ( $e ) use ($api_key ) {
 			$id = $e->id;
 			global $wpdb;
 
@@ -93,6 +93,9 @@ if ( $req_proyects->data ) {
 				$e->exist = 'false';
 			}
 
+			// Add the API key to the project object
+			$e->api_key = $api_key;
+
 			return $e;
 		},
 		$proyectos
@@ -101,3 +104,7 @@ if ( $req_proyects->data ) {
 	echo '<script>req_project_list = ' . wp_json_encode( $proyectos ) . ';</script>';
 	echo '<div id="cfact_list"></div>';
 }
+
+// Add the API key variable at the beginning of the file
+$api_key = 'your_api_key_here';
+
