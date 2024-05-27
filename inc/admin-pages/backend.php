@@ -18,8 +18,7 @@ if ( isset( $_GET['delete-api_key'] ) ) {
 	wp_redirect( admin_url( 'admin.php?page=course_factory_integration' ) );
 	exit;
 
-	#TODO: (AIDER/)
-
+	//TODO: (AIDER/)
 }
 
 // Seccion de listing.

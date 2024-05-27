@@ -34,7 +34,7 @@ if( isset( $req_proyects->pagination ) ){
 		}
 
 		// Si $pages_number > 2 y es un numero entero significa que el numero de cursos no cabe en una sola pagina, pero si hay suficientes como para llenar otra pagina entera y hay que hacer una más peticiones.
-		if( $pagination->limit >= 2 && is_int( $pagination->limit ) ){
+		if( $pagination->limit >= 2 && is_int( $pagination->limit )){
 			for ($i=0; $i < $pagination->limit ; $i++) { 
 				$offset = $pagination->limit * $i;
 
