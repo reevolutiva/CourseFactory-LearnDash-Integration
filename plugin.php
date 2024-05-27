@@ -27,7 +27,7 @@ add_action( 'admin_menu', 'course_factory_integration_init_menu' );
  *
  * @return void
  */
-function course_factory_integration_init_menu() {
+cfact_init_menu() {
 
 	$icon_url = plugin_dir_url( __FILE__ ) . '/js/public/Logo.png';
 
@@ -50,7 +50,7 @@ function course_factory_integration_init_menu() {
  *
  * @return void
  */
-function course_factory_integration_admin_page() {
+cfact_admin_page() {
 	require_once plugin_dir_path( __FILE__ ) . 'inc/admin-pages/backend.php';
 }
 
@@ -120,7 +120,7 @@ register_activation_hook( __FILE__, 'course_factory_integration_activation' );
  *
  * @return void
  */
-function course_factory_integration_activation() {
+cfact_activation() {
 
 	// Verfica si learnDash esta instalado.
 
@@ -158,7 +158,7 @@ register_deactivation_hook( __FILE__, 'course_factory_integration_deactivation' 
  *
  * @return void
  */
-function course_factory_integration_deactivation() {
+cfact_deactivation() {
 	// Enviar weebhook a CourseFactory para que sepa que este plugin esta instalado.
 	cfact_integration_send_stadistic( 'diactivation' );
 }
