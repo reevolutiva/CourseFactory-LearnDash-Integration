@@ -1,6 +1,6 @@
 <?php
 // ... rest of the code ...
 
-wp_enqueue_script( 'backend-listing-script', plugins_url( 'backend-listing.js', __FILE__ ), array( 'jquery), true );
+wp_enqueue_script( 'backend-backend-listing-script', plugins_url( 'backend-listing.js', __FILE__ ), array( 'jquery'), true );
 
 // ... rest of the code ...
