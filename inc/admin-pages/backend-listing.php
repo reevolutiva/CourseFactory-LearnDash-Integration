@@ -174,7 +174,7 @@ if ( $req_proyects->data ) {
 	);
 
 
-
+	#TODO: Mover pasar esta linea a wp_add_inline_script
 	echo '<script>req_project_list = ' . wp_json_encode( $proyects ) . ';</script>';
 	echo '<div id="cfact_list"></div>';
 
