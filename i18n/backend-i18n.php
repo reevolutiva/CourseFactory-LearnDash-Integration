@@ -10,7 +10,7 @@
  *
  * @return array $backend_i18n Array con las traducciones de los textos del que utlizara la apliacion react que carga en la pagina de administracion del plugin CourseFactory Integration.
  */
-function cousefact_backend_i18n() {
+function cfact_backend_i18n() {
 
 	$backend_i18n = array(
 		'insert_your_api_key'                      => __( 'Insert Your Api Key:', 'coursefactory-integration' ),

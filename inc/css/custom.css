@@ -12,3 +12,11 @@
     width: 25px;
     margin-right: 12px;
 }
+
+.coursefac_course_data ol{
+    list-style-type: upper-latin;
+
+}
+.coursefac_course_data ol ol{
+    list-style-type: decimal;
+}

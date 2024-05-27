@@ -6,12 +6,14 @@
  * @package Course Factory Integration
  */
 
+if ( ! defined( 'ABSPATH' ) ) exit; 
+
 /**
  * Esta funcion registra el campo personalizado cfact_project_version_id, cfact_project_version, cfact_project_outcomes_list para los cursos de LearnDash.
  *
  * @return void
  */
-function add_cfact_project_version_id_field() {
+function cfact_add_project_version_id_field() {
 
 	register_post_meta(
 		'sfwd-courses',
@@ -47,7 +49,7 @@ function add_cfact_project_version_id_field() {
 	);
 }
 
-add_action( 'init', 'add_cfact_project_version_id_field' );
+add_action( 'init', 'cfact_add_project_version_id_field' );
 
 /**
  * Esta funcion añade el metabox para el campo personalizado cfact_project_version_id, cfact_project_version, cfact_project_outcomes_list para los cursos de LearnDash.
@@ -103,7 +105,7 @@ function cfact_project_version_id_metabox_callback( $post ) {
  * @param [type] $post_id Post ID.
  * @return void
  */
-function save_cfact_project_fields( $post_id ) {
+function cfact_save_project_fields( $post_id ) {
 
 	// Verificar si el nonce está presente.
 	if ( ! isset( $_POST['cfact_proyect_version_nonce'] ) ) {
@@ -133,10 +135,6 @@ function save_cfact_project_fields( $post_id ) {
 	}
 }
 
-add_action( 'save_post', 'save_cfact_project_fields' );
-
-
-
-
+add_action( 'save_post', 'cfact_save_project_fields' );
 
 

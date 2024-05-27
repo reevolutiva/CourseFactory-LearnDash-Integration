@@ -4,6 +4,8 @@
  *
  * @package Course Factory Integration */
 
+if ( ! defined( 'ABSPATH' ) ) exit; 
+
 /**
  * Esta función se encarga de gestionar la API KEY de Coursefactory.
  * Si el parámetro $action es "add" o "update" se añade o actualiza el valor del meta_key cfact_ld_api_key.

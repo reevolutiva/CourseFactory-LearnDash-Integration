@@ -6,6 +6,8 @@
  *
  * @package Course Factory Itegration */
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 /**
  * Esta funcion se encarga de interpretar la respuesta de la API de Course Factory y de crear un curso en LearnDash.
  *
@@ -13,7 +15,7 @@
  * @param mixed $proyect_meta Un Objeto PHP con la metadata del proyecto antes de su generacion con IA.
  * @return WP_Error|int
  */
-function r33v_ld_course_importer( $course, $proyect_meta ) {
+function cfact_ld_course_importer( $course, $proyect_meta ) {
 
 	$generated_title       = $course->generated_title;
 	$generated_description = $course->generated_description;
@@ -30,7 +32,7 @@ function r33v_ld_course_importer( $course, $proyect_meta ) {
 
 		update_option( 'cfact-status-imported', 'in-process' );
 
-		$res = r33v_ld_course_create(
+		$res = cfact_ld_course_create(
 			$generated_title,
 			$generated_description,
 			$outcome_list,
@@ -49,7 +51,7 @@ function r33v_ld_course_importer( $course, $proyect_meta ) {
 
 		add_option( 'cfact-status-imported', 'in-process' );
 
-		$res = r33v_ld_course_create(
+		$res = cfact_ld_course_create(
 			$generated_title,
 			$generated_description,
 			$outcome_list,
@@ -84,7 +86,7 @@ function r33v_ld_course_importer( $course, $proyect_meta ) {
  * @param array  $proyect_meta Un array con la metadata del proyecto antes de su generacion con IA.
  * @return int
  */
-function r33v_ld_course_create( $title, $description, $outcome_list, $structure_list, $version, $id, $proyect_meta ) {
+function cfact_ld_course_create( $title, $description, $outcome_list, $structure_list, $version, $id, $proyect_meta ) {
 
 	global $wpdb;
 
@@ -146,7 +148,7 @@ function r33v_ld_course_create( $title, $description, $outcome_list, $structure_
 
 	// Step 2: Create a Secction Heading.
 
-	r33v_ld_section_create( $course_id, $structure_list );
+	cfact_ld_section_create( $course_id, $structure_list );
 
 	// Step 3: Create a Lesson.
 
@@ -165,7 +167,7 @@ function r33v_ld_course_create( $title, $description, $outcome_list, $structure_
 				'description' => $description,
 			);
 
-			r33v_ld_lesson_create( $course_id, $lession, $sub_structure_list, $section_index, $lession_index );
+			cfact_ld_lesson_create( $course_id, $lession, $sub_structure_list, $section_index, $lession_index );
 
 		}
 	}
@@ -185,7 +187,7 @@ function r33v_ld_course_create( $title, $description, $outcome_list, $structure_
  * @param mixed $structure_list array con la estructura del curso.
  * @return bool | int
  */
-function r33v_ld_section_create( $course_id, $structure_list ) {
+function cfact_ld_section_create( $course_id, $structure_list ) {
 
 	// Recibe el ID del curso.
 
@@ -231,7 +233,7 @@ function r33v_ld_section_create( $course_id, $structure_list ) {
  * @param int   $lession_index pocicion en el array de lecciones.
  * @return null
  */
-function r33v_ld_lesson_create( $course_id, $lession, $sub_content_list, $section_index, $lession_index ) {
+function cfact_ld_lesson_create( $course_id, $lession, $sub_content_list, $section_index, $lession_index ) {
 
 	// Extraemos la data de lession.
 
@@ -270,31 +272,31 @@ function r33v_ld_lesson_create( $course_id, $lession, $sub_content_list, $sectio
 
 		switch ( $type ) {
 			case 'reading':
-				r33v_ld_topic_create( $content_version_id, $course_id, $lession_id, $title, $description, $type, $section_index, $lession_index, $topic_key );
+				cfact_ld_topic_create( $content_version_id, $course_id, $lession_id, $title, $description, $type, $section_index, $lession_index, $topic_key );
 
 				break;
 			case 'video':
-				r33v_ld_topic_create( $content_version_id, $course_id, $lession_id, $title, $description, $type, $section_index, $lession_index, $topic_key );
+				cfact_ld_topic_create( $content_version_id, $course_id, $lession_id, $title, $description, $type, $section_index, $lession_index, $topic_key );
 
 				break;
 			case 'quiz':
-				r33v_ld_quiz_create( $content_version_id, $course_id, $lession_id, $title, $description, $type, $section_index, $lession_index, $topic_key );
+				cfact_ld_quiz_create( $content_version_id, $course_id, $lession_id, $title, $description, $type, $section_index, $lession_index, $topic_key );
 
 				break;
 			case 'survey':
-				r33v_ld_quiz_create( $content_version_id, $course_id, $lession_id, $title, $description, $type, $section_index, $lession_index, $topic_key );
+				cfact_ld_quiz_create( $content_version_id, $course_id, $lession_id, $title, $description, $type, $section_index, $lession_index, $topic_key );
 
 				break;
 			case 'discussion':
-				r33v_ld_topic_create( $content_version_id, $course_id, $lession_id, $title, $description, $type, $section_index, $lession_index, $topic_key );
+				cfact_ld_topic_create( $content_version_id, $course_id, $lession_id, $title, $description, $type, $section_index, $lession_index, $topic_key );
 
 				break;
 			case 'peer_review':
-				r33v_ld_topic_create( $content_version_id, $course_id, $lession_id, $title, $description, $type, $section_index, $lession_index, $topic_key );
+				cfact_ld_topic_create( $content_version_id, $course_id, $lession_id, $title, $description, $type, $section_index, $lession_index, $topic_key );
 
 				break;
 			default:
-				r33v_ld_topic_create( $content_version_id, $course_id, $lession_id, $title, $description, $type, $section_index, $lession_index, $topic_key );
+				cfact_ld_topic_create( $content_version_id, $course_id, $lession_id, $title, $description, $type, $section_index, $lession_index, $topic_key );
 				break;
 		}
 	}
@@ -317,7 +319,7 @@ function r33v_ld_lesson_create( $course_id, $lession, $sub_content_list, $sectio
  * @param int    $topic_key pocicion del topic en una lista de topicos dentro de una lecccion.
  * @return int
  */
-function r33v_ld_topic_create( $content_version_id, $course_id, $lession_id, $title_old, $description_old, $type_a, $section_index, $lession_index, $topic_key ) {
+function cfact_ld_topic_create( $content_version_id, $course_id, $lession_id, $title_old, $description_old, $type_a, $section_index, $lession_index, $topic_key ) {
 
 	// Obtengo el api_key de Course Factory desde wp-options.
 	$api_key      = cfact_ld_api_key_mannger( 'get' );
@@ -479,7 +481,7 @@ function r33v_ld_topic_create( $content_version_id, $course_id, $lession_id, $ti
  * @param int    $topic_key pocicion del topic en una lista de topicos dentro de una lecccion.
  * @return null | string
  */
-function r33v_ld_quiz_create( $content_version, $course_id, $lession_id, $title, $description, $type_a, $section_index, $lession_index, $topic_key ) {
+function cfact_ld_quiz_create( $content_version, $course_id, $lession_id, $title, $description, $type_a, $section_index, $lession_index, $topic_key ) {
 
 	if ( ! empty( $content_version ) ) {
 
@@ -664,7 +666,7 @@ function r33v_ld_quiz_create( $content_version, $course_id, $lession_id, $title,
 			);
 
 			// Creamos las preguntas del quiz.
-			r33v_ld_question_create( $nueva_pregunta );
+			cfact_ld_question_create( $nueva_pregunta );
 		}
 	}
 }
@@ -677,7 +679,7 @@ function r33v_ld_quiz_create( $content_version, $course_id, $lession_id, $title,
  * @param array $nueva_pregunta Un array con el titulo y la descripcion de la pregunta.
  * @return void
  */
-function r33v_ld_question_create( $nueva_pregunta ) {
+function cfact_ld_question_create( $nueva_pregunta ) {
 
 	// Creamos el CPT Pregunta.
 
@@ -755,7 +757,7 @@ function r33v_ld_question_create( $nueva_pregunta ) {
 
 	}
 
-	r33v_ld_answer_create( $pregunta_list, $cpt_question_id, $answer_type );
+	cfact_ld_answer_create( $pregunta_list, $cpt_question_id, $answer_type );
 }
 
 /**
@@ -767,7 +769,7 @@ function r33v_ld_question_create( $nueva_pregunta ) {
  * @param string $answer_type tipo de pregunta.
  * @return void
  */
-function r33v_ld_answer_create( $pregunta_list, $question_id, $answer_type ) {
+function cfact_ld_answer_create( $pregunta_list, $question_id, $answer_type ) {
 
 	// Guardamos las respuestas como el valor de una propiedad llamada _answerData.
 	$question_data = array(
