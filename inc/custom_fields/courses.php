@@ -103,7 +103,7 @@ function cfact_project_version_id_metabox_callback( $post ) {
  * @param [type] $post_id Post ID.
  * @return void
  */
-function save_cfact_project_fields( $post_id ) {
+function cfact_save_project_fields( $post_id ) {
 
 	// Verificar si el nonce está presente.
 	if ( ! isset( $_POST['cfact_proyect_version_nonce'] ) ) {
@@ -133,6 +133,6 @@ function save_cfact_project_fields( $post_id ) {
 	}
 }
 
-add_action( 'save_post', 'save_cfact_project_fields' );
+add_action( 'save_post', 'cfact_save_project_fields' );
 
 

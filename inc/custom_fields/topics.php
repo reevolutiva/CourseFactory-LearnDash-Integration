@@ -11,7 +11,7 @@
  *
  * @return void
  */
-function register_cfact_topic_type_field() {
+function cfact_register_topic_type_field() {
 	register_post_meta(
 		'sfwd-topic',
 		'cfact_topic_type',
@@ -28,7 +28,7 @@ function register_cfact_topic_type_field() {
  *
  * @return void
  */
-function add_cfact_topic_type_metabox() {
+function cfact_add_topic_type_metabox() {
 	add_meta_box(
 		'cfact_topic_type_metabox',
 		'CFact Topic Type',
@@ -50,7 +50,7 @@ function render_cfact_topic_type_metabox( $post ) {
 	$value = get_post_meta( $post->ID, 'cfact_topic_type', true );
 
 	// Agregar el campo nonce.
-	wp_nonce_field( 'save_cfact_topic_type_metabox', 'cfact_topic_type_nonce' );
+	wp_nonce_field( 'cfact_save_topic_type_metabox', 'cfact_topic_type_nonce' );
 	?>
 	<label for="cfact_topic_type"> <?php echo esc_html( __( 'CFact Topic Type', 'coursefactory-integration' ) ); ?> :</label>
 	<select id="cfact_topic_type" name="cfact_topic_type">
@@ -74,14 +74,14 @@ function render_cfact_topic_type_metabox( $post ) {
  * @param int $post_id El id del post actual.
  * @return void
  */
-function save_cfact_topic_type_metabox( $post_id ) {
+function cfact_save_topic_type_metabox( $post_id ) {
 	// Verificar si el nonce está presente.
 	if ( ! isset( $_POST['cfact_topic_type_nonce'] ) ) {
 		return;
 	}
 
 	// Verificar si el nonce es válido.
-	if ( ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['cfact_topic_type_nonce'] ) ), 'save_cfact_topic_type_metabox' ) ) {
+	if ( ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['cfact_topic_type_nonce'] ) ), 'cfact_save_topic_type_metabox' ) ) {
 		return;
 	}
 
@@ -97,9 +97,9 @@ function save_cfact_topic_type_metabox( $post_id ) {
 	}
 }
 
-add_action( 'init', 'register_cfact_topic_type_field' );
-add_action( 'add_meta_boxes', 'add_cfact_topic_type_metabox' );
-add_action( 'save_post_sfwd-topic', 'save_cfact_topic_type_metabox' );
+add_action( 'init', 'cfact_register_topic_type_field' );
+add_action( 'add_meta_boxes', 'cfact_add_topic_type_metabox' );
+add_action( 'save_post_sfwd-topic', 'cfact_save_topic_type_metabox' );
 
 
 
