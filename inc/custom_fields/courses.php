@@ -11,7 +11,7 @@
  *
  * @return void
  */
-function add_cfact_project_version_id_field() {
+function cfact_project_version_id_field() {
 
 	register_post_meta(
 		'sfwd-courses',
@@ -47,7 +47,7 @@ function add_cfact_project_version_id_field() {
 	);
 }
 
-add_action( 'init', 'add_cfact_project_version_id_field' );
+add_action( 'init', 'cfact_project_version_id_field' );
 
 /**
  * Esta funcion añade el metabox para el campo personalizado cfact_project_version_id, cfact_project_version, cfact_project_outcomes_list para los cursos de LearnDash.
