@@ -46,3 +46,6 @@ Initial release with full LearnDash integration and AI-powered course creation t
 ## Upgrade Notice 
 ### 1.0
 Initial release.
+
+# SOURCE CODE
+* Here is the source code of the plugin with the uncompiled JS and CSS https://github.com/reevolutiva/coursefactory-integration

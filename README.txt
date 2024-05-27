@@ -48,6 +48,7 @@ The plugin uses CourseFactory's AI algorithms to analyze your content preference
 
 == Changelog ==
 
+
 = 1.0 =
 * Initial release with LearnDash integration and AI-powered course creation tools.
 
@@ -55,3 +56,7 @@ The plugin uses CourseFactory's AI algorithms to analyze your content preference
 
 = 1.0 =
 Initial release.
+
+== SOURCE CODE ==
+* Here is the source code of the plugin with the uncompiled JS and CSS https://github.com/reevolutiva/coursefactory-integration
+
