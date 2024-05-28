@@ -92,13 +92,17 @@ function cfact_ld_course_create( $title, $description, $outcome_list, $structure
 
 	global $wpdb;
 
-	$post_id = $wpdb->get_var(
-		$wpdb->prepare(
-			'SELECT * FROM `wp_postmeta` WHERE `meta_value` = %s',
-			$id
-		),
-		1
-	);
+	$post_id = wp_cache_get( 'cfact_course_post_id_' . $id, 'cfact' );
+
+	if ( false === $post_id ) {
+		$post_id = $wpdb->get_var(
+			$wpdb->prepare(
+				'SELECT post_id FROM `wp_postmeta` WHERE `meta_key` = "cfact_project_version_id" AND `meta_value` = %s LIMIT 1',
+				$id
+			)
+		);
+		wp_cache_set( 'cfact_course_post_id_' . $id, $post_id, 'cfact' );
+	}
 
 	$course_atts = array(
 		'post_title'   => $title,
@@ -109,7 +113,7 @@ function cfact_ld_course_create( $title, $description, $outcome_list, $structure
 		'meta_input'   => array(
 			'cfact_project_version'      => $version,
 			'cfact_project_version_id'   => $id,
-			'cfact_project_outcome_list' => serialize( $outcome_list ),
+			'cfact_project_outcome_list' => wp_json_encode( $outcome_list ),
 		),
 	);
 
@@ -144,7 +148,7 @@ function cfact_ld_course_create( $title, $description, $outcome_list, $structure
 	);
 
 	if ( false !== $proyect_meta ) {
-		$serialized_proyect_meta = serialize( $proyect_meta );
+		$serialized_proyect_meta = wp_json_encode( $proyect_meta );
 		update_post_meta( $course_id, 'cfact_project_meta', $serialized_proyect_meta );
 	}
 
@@ -260,8 +264,8 @@ function cfact_ld_lesson_create( $course_id, $lession, $sub_content_list, $secti
 
 	foreach ( $sub_content_list as $topic_key => $topic ) {
 
-			error_log( print_r( 'topic', true ) );
-			error_log( print_r( $topic, true ) );
+			// error_log( print_r( 'topic', true ) );
+			// error_log( print_r( $topic, true ) );
 
 			$content_version_id = $topic->content_version_id;
 			$type               = $topic->type->name;
@@ -321,7 +325,7 @@ function cfact_ld_lesson_create( $course_id, $lession, $sub_content_list, $secti
  * @param int    $topic_key pocicion del topic en una lista de topicos dentro de una lecccion.
  * @return int
  */
-function cfact_ld_topic_create( $content_version_id, $course_id, $lession_id, $title_old, $description_old, $type_a, $section_index, $lession_index, $topic_key ) {
+function cfact_ld_topic_create( $content_version_id, $course_id, $lession_id, $title_old, $description_old, $type_a ) {
 
 	// Obtengo el api_key de Course Factory desde wp-options.
 	$api_key      = cfact_ld_api_key_mannger( 'get' );
@@ -483,7 +487,7 @@ function cfact_ld_topic_create( $content_version_id, $course_id, $lession_id, $t
  * @param int    $topic_key pocicion del topic en una lista de topicos dentro de una lecccion.
  * @return null | string
  */
-function cfact_ld_quiz_create( $content_version, $course_id, $lession_id, $title, $description, $type_a, $section_index, $lession_index, $topic_key ) {
+function cfact_ld_quiz_create( $content_version, $course_id, $lession_id, $title, $description, $type_a ) {
 
 	if ( ! empty( $content_version ) ) {
 
