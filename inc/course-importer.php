@@ -95,12 +95,17 @@ function cfact_ld_course_create( $title, $description, $outcome_list, $structure
 	$post_id = wp_cache_get( 'cfact_course_post_id_' . $id, 'cfact' );
 
 	if ( false === $post_id ) {
-		$post_id = $wpdb->get_var(
-			$wpdb->prepare(
-				'SELECT post_id FROM `wp_postmeta` WHERE `meta_key` = "cfact_project_version_id" AND `meta_value` = %s LIMIT 1',
-				$id
-			)
-		);
+		$post_id = wp_cache_get( 'cfact_course_post_id_' . $id, 'cfact' );
+
+		if ( false === $post_id ) {
+			$post_id = $wpdb->get_var(
+				$wpdb->prepare(
+					'SELECT post_id FROM `wp_postmeta` WHERE `meta_key` = "cfact_project_version_id" AND `meta_value` = %s LIMIT 1',
+					$id
+				)
+			);
+			wp_cache_set( 'cfact_course_post_id_' . $id, $post_id, 'cfact' );
+		}
 		wp_cache_set( 'cfact_course_post_id_' . $id, $post_id, 'cfact' );
 	}
 
@@ -507,7 +512,7 @@ function cfact_ld_topic_create( $content_version_id, $course_id, $lession_id, $t
  * @param int    $course_id       The LearnDash course ID.
  * @param int    $lession_id      The LearnDash lesson ID.
  * @param string $title           The quiz title.
- * @param string $description     The quiz description. 
+ * @param string $description     The quiz description.
  * @param string $type_a          The quiz type.
  * @return string|null
  */  
