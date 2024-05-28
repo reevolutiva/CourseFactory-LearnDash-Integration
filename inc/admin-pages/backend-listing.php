@@ -16,12 +16,16 @@ $proyectos = array();
 
 // Calculamos cuantas veces debe iterar para hacer fetch de todo.
 if( isset( $req_proyects->pagination ) ){
+
 	$pagination = $req_proyects->pagination;
 
 	if( $pagination->limit === $pagination->offset ){
 		// No paginamos
 	}
 	else{
+
+		error_log( print_r( "Paginamos", true ) );
+
 		// Si $pages_number > 1 y menor que 2 significa que el numero de cursos no cabe en una sola pagina, pero tampoco hay tantos como para llenar otra pagina entera y hay que hacer una 2da peticion.
 		if( $pagination->limit > 1 && $pagination->limit < 2 ){
 			$second_req_proyects = cfac_get_list_proyects( $api_key, $pagination->limit );
@@ -34,11 +38,21 @@ if( isset( $req_proyects->pagination ) ){
 
 		// Si $pages_number > 2 y es un numero entero significa que el numero de cursos no cabe en una sola pagina, pero si hay suficientes como para llenar otra pagina entera y hay que hacer una más peticiones.
 		if( $pagination->limit >= 2 && is_int( $pagination->limit )){
+
+			error_log( print_r( "Paginamos enteros", true ) );
+
 			for ($i=0; $i < $pagination->limit ; $i++) { 
+
 				$offset = $pagination->limit * $i;
+
+				error_log( print_r( "iteracion $i", true ) );
+				error_log( print_r( "offset $offset", true ) );
+				error_log( print_r( "limit $pagination->limit", true ) );
 
 				$aditional_req_proyects = cfac_get_list_proyects( $api_key, $offset );
 				$aditional_req_proyects = json_decode( $aditional_req_proyects );
+
+				#error_log( print_r( $aditional_req_proyects, true ) );
 
 				foreach ($aditional_req_proyects->data as $item ) {
 					array_push( $proyectos, $item );
@@ -47,9 +61,13 @@ if( isset( $req_proyects->pagination ) ){
 		}
 
 		if( $pagination->limit >= 2 && is_float( $pagination->limit )){
+
 			$limit = round( $pagination->limit, 0 , PHP_ROUND_HALF_UP) ;
 
-			for ($i=0; $i < $limit ; $i++) { 
+			error_log( print_r( "Paginamos float", true ) );
+
+			for ($i=0; $i < $limit ; $i++) {
+
 				$offset = $pagination->limit * $i;
 
 				$aditional_req_proyects = cfac_get_list_proyects( $api_key, $offset );
@@ -102,8 +120,10 @@ if ( isset( $req_proyects->data ) ) {
 
 	wp_add_inline_script( 'cfact-learndash-integration', 'var req_project_list =' . wp_json_encode ( $proyectos ) . ";" , 'before' );
 
-	echo '<div id="cfact_list"></div>';
+	#echo '<div id="cfact_list"></div>';
 }
+
+var_dump( COUNT( $proyectos ) );
 
 
 // Add the API key variable at the beginning of the file
