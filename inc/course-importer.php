@@ -287,7 +287,6 @@ function cfact_ld_lesson_create( $course_id, $lession, $sub_content_list, $secti
 
 	foreach ( $sub_content_list as $topic_key => $topic ) {
 
-
 			$content_version_id = $topic->content_version_id;
 			$type               = $topic->type->name;
 
@@ -352,7 +351,7 @@ function cfact_ld_lesson_create( $course_id, $lession, $sub_content_list, $secti
  *
  * @param int    $content_version_id The content version ID in Course Factory.
  * @param int    $course_id          The LearnDash course ID.
- * @param int    $lession_id         The LearnDash lesson ID.  
+ * @param int    $lession_id         The LearnDash lesson ID.
  * @param string $title_old          The topic title.
  * @param string $description_old    The topic description.
  * @param string $type_a             The topic type.
@@ -522,7 +521,7 @@ function cfact_ld_topic_create( $content_version_id, $course_id, $lession_id, $t
  */
 /**
  * Creates a quiz in LearnDash.
- * This affects 3 tables: wp_posts for the CPT, quizPro-master for quiz metadata, 
+ * This affects 3 tables: wp_posts for the CPT, quizPro-master for quiz metadata,
  * and post-meta to link quizPro-master to the CPT.
  * Requests the quiz content from the Course Factory API and creates question CPTs.
  *
@@ -533,7 +532,7 @@ function cfact_ld_topic_create( $content_version_id, $course_id, $lession_id, $t
  * @param string $description     The quiz description.
  * @param string $type_a          The quiz type.
  * @return string|null
- */  
+ */
 function cfact_ld_quiz_create( $content_version, $course_id, $lession_id, $title, $description, $type_a ) {
 
 	if ( ! empty( $content_version ) ) {

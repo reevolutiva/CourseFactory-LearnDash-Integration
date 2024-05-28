@@ -21,7 +21,7 @@ function coursefac_delete_course( $course_id ) {
 
 	global $wpdb;
 
-	$result = '';
+	    $result = '';
 
 	try {
 		// Parseo id.

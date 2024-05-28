@@ -61,7 +61,7 @@ function enqueue_script(): void {
  */
 function enqueue_css(): void {
 	$version = filemtime( plugin_dir_path( __FILE__ ) . 'css/custom_admin.css' );
-	
+
 	wp_enqueue_style(
 		'admin-styles',
 		plugin_dir_url( __FILE__ ) . 'css/custom_admin.css',
