@@ -42,6 +42,11 @@ function enqueue_css(): void {
  *
  * @return void
  */
+/**
+ * Enqueues the necessary JavaScript files.
+ *
+ * @return void
+ */
 function enqueue_script() {
 
 	wp_register_script(
@@ -72,6 +77,14 @@ add_action( 'admin_enqueue_scripts', 'enqueue_css' );
 
 add_filter( 'script_loader_tag', 'moduleTypeScripts', 10, 2 );
 
+/**
+ * Adds the type attribute to script tags.
+ *
+ * @param string $tag    The HTML script tag.
+ * @param string $handle The script handle.
+ *
+ * @return string The modified HTML script tag.
+ */
 /**
  * Adds the type attribute to script tags.
  *
