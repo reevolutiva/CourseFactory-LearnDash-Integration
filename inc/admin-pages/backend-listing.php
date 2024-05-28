@@ -2,7 +2,7 @@
 /**
  *  Path: wp-content/plugins/coursefactory-integration/inc/admin-pages/backend-listing.php.
  *  Este archivo contiene el codigo de la pagina de listing en la administracion de coursefactory.
- *
+ */
  * @package Course Factory Integration
  */
 
@@ -31,15 +31,22 @@ if ( isset( $req_proyects->data ) ) {
 			$id = $e->id;
 			global $wpdb;
 
-			$table = $wpdb->prefix . 'postmeta'; // Consider using wp_cache_get() / wp_cache_set() or wp_cache_delete().
+			$cache_key = 'cfact_project_version_id_' . $id;
+			$post_id = wp_cache_get( $cache_key );
 
-			$post_id = (int) $wpdb->get_var(
-				$wpdb->prepare(
-					"SELECT post_id FROM {$table} WHERE meta_key = %s AND meta_value = %s",
-					'cfact_project_version_id',
-					$id
-				)
-			);
+			if ( false === $post_id ) {
+				$table = $wpdb->prefix . 'postmeta';
+
+				$post_id = (int) $wpdb->get_var(
+					$wpdb->prepare(
+						"SELECT post_id FROM {$table} WHERE meta_key = %s AND meta_value = %s",
+						'cfact_project_version_id',
+						$id
+					)
+				);
+
+				wp_cache_set( $cache_key, $post_id );
+			}
 
 			$exits = 0 === $post_id ? false : true;
 
