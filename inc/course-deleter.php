@@ -106,12 +106,18 @@ function coursefac_delete_course( $course_id ) {
 					$question = wp_cache_get( $cache_key );
 
 					if ( false === $question ) {
-						$question = $wpdb->get_results(
-							$wpdb->prepare(
-								"SELECT post_id FROM {$wpdb->postmeta} WHERE meta_key = 'quiz_id' AND meta_value = %s",
-								$quiz_id
-							)
-						);
+						$cache_key = 'question_' . $quiz_id;
+						$question = wp_cache_get( $cache_key );
+
+						if ( false === $question ) {
+							$question = $wpdb->get_results(
+								$wpdb->prepare(
+									"SELECT post_id FROM {$wpdb->postmeta} WHERE meta_key = 'quiz_id' AND meta_value = %s",
+									$quiz_id
+								)
+							);
+							wp_cache_set( $cache_key, $question, '', 3600 );
+						}
 						wp_cache_set( $cache_key, $question, '', 3600 );
 					}
 					wp_cache_set( $cache_key, $question, '', 3600 );
