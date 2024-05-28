@@ -1,4 +1,7 @@
 <?php
+/**
+ * Backend listing page
+ */
 
 // ... rest of code ...
 
