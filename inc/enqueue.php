@@ -1,11 +1,12 @@
 <?php
 /**
  * Path: wp-content/plugins/coursefactory-integration/inc/enqueue.php
- * Este archivo encola los ficheros de javascript y css necesarios para el funcionamiento del frontend react del plugin de CousreFactory.
+ * Este archivo encola los ficheros de javascript y css necesarios para el funcionamiento del frontend react del plugin de CourseFactory.
  *
- * @package Course Factory Integration. */
+ * @package Course Factory Integration
+ */
 
-declare( strict_types = 1 );
+declare( strict_types=1 );
 
 namespace Kucrut\ViteForWPExample\React\Enqueue;
 
@@ -59,11 +60,13 @@ function enqueue_script(): void {
  * Enqueue CSS
  */
 function enqueue_css(): void {
+	$version = filemtime( plugin_dir_path( __FILE__ ) . 'css/custom_admin.css' );
+	
 	wp_enqueue_style(
 		'admin-styles',
 		plugin_dir_url( __FILE__ ) . 'css/custom_admin.css',
 		array(),
-		'1.0.0',
+		$version,
 		'all'
 	);
 }
