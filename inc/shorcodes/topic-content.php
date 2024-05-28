@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-<?php
-// ... rest of the code ...
-
-wp_enqueue_script( 'topic-content-script', plugins_url( 'topic-content.js', __FILE__ ), array( 'jquery'), true );
-
-// ... rest of the code ...
-=======
 <?php
 /**
  * Path: wp-content\plugins\coursefactory-integration\inc\shorcodes\topic-content.php
@@ -42,4 +34,3 @@ function coursefac_topic_content( $atts ) {
 
 // Registro shorcode.
 add_shortcode( 'coursefac_topic_content', 'coursefac_topic_content' );
->>>>>>> aider-dev

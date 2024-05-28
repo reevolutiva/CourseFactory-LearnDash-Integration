@@ -791,3 +791,89 @@ function cfact_ld_answer_create( $pregunta_list, $question_id, $answer_type ) {
 	// Save the new data to database.
 	$question_mapper->save( $question_model );
 }
+
+/**
+ * Esta funcion obtiene todos los cursos disponibles moviendose en la paginacion.
+ *
+ * @param array $req_proyects
+ * @param array $proyectos
+ * @param string $api_key
+ * @return array
+ */
+function cfact_get_all_content_by_pagination( $req_proyects, $proyectos, $api_key){
+	// Calculamos cuantas veces debe iterar para hacer fetch de todo.
+	if( isset( $req_proyects->pagination ) ){
+
+		$pagination = $req_proyects->pagination;
+
+		# 2. Calculamos cuantas veces debe iterar para hacer fetch de todo.
+		$pages_number = $pagination->count / $pagination->limit ;
+		#error_log( print_r( "Numero de páginas: $pages_number", true ) );
+
+		if( $pagination->limit === $pagination->offset ){
+			// No paginamos
+		}
+		else{
+
+			#error_log( print_r( "Paginamos", true ) );
+
+			// Si $pages_number > 1 y menor que 2 significa que el numero de cursos no cabe en una sola pagina, pero tampoco hay tantos como para llenar otra pagina entera y hay que hacer una 2da peticion.
+			if( $pages_number > 1 && $pages_number < 2 ){
+				
+				$second_req_proyects = cfac_get_list_proyects( $api_key, $pagination->limit );
+				$second_req_proyects = json_decode( $second_req_proyects );
+
+				#error_log( print_r( "solo uno más ", true ) );
+
+				foreach ($second_req_proyects->data as $item ) {
+					array_push( $proyectos, $item );
+				}
+			}
+
+			// Si $pages_number > 2 y es un numero entero significa que el numero de cursos no cabe en una sola pagina, pero si hay suficientes como para llenar otra pagina entera y hay que hacer una más peticiones.
+			if( $pages_number >= 2 && is_int( $pages_number )){
+
+				#error_log( print_r( "Paginamos enteros", true ) );
+
+				for ($i=0; $i < $pagination->limit ; $i++) { 
+
+					$offset = $pagination->limit * $i;
+
+					// error_log( print_r( "iteracion $i", true ) );
+					// error_log( print_r( "offset $offset", true ) );
+					// error_log( print_r( "limit $pagination->limit", true ) );
+
+					$aditional_req_proyects = cfac_get_list_proyects( $api_key, $offset );
+					$aditional_req_proyects = json_decode( $aditional_req_proyects );
+
+					#error_log( print_r( $aditional_req_proyects, true ) );
+
+					foreach ($aditional_req_proyects->data as $item ) {
+						array_push( $proyectos, $item );
+					}
+				}
+			}
+
+			if( $pages_number >= 2 && is_float( $pages_number )){
+
+				$limit = round( $pagination->limit, 0 , PHP_ROUND_HALF_UP) ;
+
+				#error_log( print_r( "Paginamos float", true ) );
+
+				for ($i=0; $i < $limit ; $i++) {
+
+					$offset = $pagination->limit * $i;
+
+					$aditional_req_proyects = cfac_get_list_proyects( $api_key, $offset );
+					$aditional_req_proyects = json_decode( $aditional_req_proyects );
+
+					foreach ($aditional_req_proyects->data as $item ) {
+						array_push( $proyectos, $item );
+					}
+				}
+			}
+		}
+	}
+
+	return $proyectos;
+}

@@ -5,15 +5,6 @@
  *
  * @package Course Factory Integration */
 
-// namespace Kucrut\ViteForWPExample\React;
-
-// require_once __DIR__ . '/vite-for-wp.php';
-// require_once __DIR__ . '/inc/Enqueue.php';
-
-// Enqueue\frontend();
-// Enqueue\backend();
-
-
 /**
  * Enqueue CSS
  */
