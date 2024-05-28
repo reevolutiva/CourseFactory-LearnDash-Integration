@@ -41,9 +41,9 @@ function cfac_get_content( $api_key, $content_id ) {
 /**
  * Esta function obtiene una lista de todos los proyectos asociados a una cuenta de coursefactory que esta haciendo la peticion.
  *
- * @param [type]  $api_key
- * @param integer $offset
- * @param integer $limit
+ * @param string  $api_key Api Key de Course Factory.
+ * @param integer $offset Offset para la lista de proyectos.
+ * @param integer $limit Límite de proyectos a obtener.
  * @return array
  */
 function cfac_get_list_proyects( $api_key, $offset = 0, $limit = 20 ) {
