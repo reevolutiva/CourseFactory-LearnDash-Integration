@@ -145,8 +145,6 @@ function cfact_deactivation() {
 	cfact_integration_send_stadistic( 'diactivation' );
 }
 
-
-
 require 'i18n/backend-i18n.php';
 
 require 'inc/course-importer.php';
