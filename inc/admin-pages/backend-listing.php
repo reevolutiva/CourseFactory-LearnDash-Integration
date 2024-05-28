@@ -2,9 +2,8 @@
 /**
  *  Path: wp-content/plugins/coursefactory-integration/inc/admin-pages/backend-listing.php.
  *  Este archivo contiene el codigo de la pagina de listing en la administracion de coursefactory.
- */
+
  * @package Course Factory Integration
- */
 
 
 // Listamos todos los proyectos.
