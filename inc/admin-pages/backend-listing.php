@@ -30,19 +30,17 @@ if ( isset( $req_proyects->data ) ) {
 			$id = $e->id;
 			global $wpdb;
 
-			$cache_key = 'cfact_project_version_id_' . $id;
-			$post_id = wp_cache_get( $cache_key );
+			$cache_key  = 'cfact_project_version_id_' . $id;
+			$post_id    = wp_cache_get( $cache_key );
 
 			if ( false === $post_id ) {
-				$table = $wpdb->prefix . 'postmeta';
-
-				$post_id = (int) $wpdb->get_var(
-					$wpdb->prepare(
-						"SELECT post_id FROM {$table} WHERE meta_key = %s AND meta_value = %s",
-						'cfact_project_version_id',
-						$id
-					)
+				$table   = $wpdb->prefix . 'postmeta';
+				$query   = $wpdb->prepare(
+					"SELECT post_id FROM {$table} WHERE meta_key = %s AND meta_value = %s",
+					'cfact_project_version_id',
+					$id
 				);
+				$post_id = (int) $wpdb->get_var( $query );
 
 				wp_cache_set( $cache_key, $post_id );
 			}
