@@ -65,15 +65,18 @@ function cfact_ld_api_key_mannger( $action, $data = null ) {
 }
 
 
-function handleScreen() {
+/**
+ * Handle screen actions for API key management.
+ */
+function handle_screen() {
 
-	if ( isset( $_GET['delete-api_key'] ) ) {
+	if ( isset( $_GET['delete-api_key'] ) && check_admin_referer( 'delete_api_key_action', 'delete_api_key_nonce' ) ) {
 		cfact_ld_api_key_mannger( 'delete' );
-		wp_redirect( admin_url( 'admin.php?page=course_factory_integration' ) );
+		wp_safe_redirect( admin_url( 'admin.php?page=course_factory_integration' ) );
 		exit;
 	}
 
-	if ( isset( $_GET['set-api_key'] ) && isset( $_GET['api-key'] ) && ! empty( $_GET['api-key'] ) ) {
+	if ( isset( $_GET['set-api_key'] ) && isset( $_GET['api-key'] ) && ! empty( $_GET['api-key'] ) && check_admin_referer( 'set_api_key_action', 'set_api_key_nonce' ) ) {
 
 		$api_key_data    = sanitize_text_field( wp_unslash( $_GET['api-key'] ) );
 		$keepme_informed = isset( $_GET['keepme-informed'] ) ? sanitize_text_field( wp_unslash( $_GET['keepme-informed'] ) ) : 'false';
@@ -114,9 +117,9 @@ function handleScreen() {
 			$body    = json_decode( $body );
 		}
 
-		wp_redirect( admin_url( 'admin.php?page=course_factory_integration' ) );
+		wp_safe_redirect( admin_url( 'admin.php?page=course_factory_integration' ) );
 		exit;
 	}
 }
 
-add_action( 'admin_init', 'handleScreen' );
+add_action( 'admin_init', 'handle_screen' );
