@@ -27,6 +27,11 @@ function enqueue_css(): void {
 	);
 }
 
+/**
+ * Enqueues the necessary JavaScript files.
+ *
+ * @return void
+ */
 function enqueue_script() {
 
 	wp_register_script(
@@ -40,6 +45,7 @@ function enqueue_script() {
 	wp_register_script(
 		'cfact-learndash-integration-customize',
 		CFACT_PLUGIN_URL . 'js/public/cfactory-customize.js',
+		array(),
 		'1.0.0',
 		true
 	);
@@ -56,6 +62,14 @@ add_action( 'admin_enqueue_scripts', 'enqueue_css' );
 
 add_filter( 'script_loader_tag', 'moduleTypeScripts', 10, 2 );
 
+/**
+ * Adds the type attribute to script tags.
+ *
+ * @param string $tag    The HTML script tag.
+ * @param string $handle The script handle.
+ *
+ * @return string The modified HTML script tag.
+ */
 function module_type_scripts( $tag, $handle ) {
 	$tyype = wp_scripts()->get_data( $handle, 'type' );
 
