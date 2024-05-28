@@ -35,12 +35,16 @@ function coursefac_delete_course( $course_id ) {
 		$cpt_id_array = $wpdb->get_results(
 			$wpdb->prepare(
 				"SELECT post_id 
-				FROM {$wpdb->postmeta}
+				FROM {$table_name}
 				WHERE meta_key = 'course_id' 
 					AND meta_value = %d",
 				$course_id
 			)
 		);
+
+		if ( ! empty( $cpt_id_array ) ) {
+			wp_cache_set( 'cpt_id_array_' . $course_id, $cpt_id_array, '', 3600 );
+		}
 
 		// Obtenemos los post relacionados con el course_id.
 		$cpt_array = array_map(
@@ -82,12 +86,18 @@ function coursefac_delete_course( $course_id ) {
 
 				$quiz_id = $e->ID;
 
-				$question = $wpdb->get_results(
-					$wpdb->prepare(
-						"SELECT post_id FROM $table_name WHERE meta_key = 'quiz_id' AND meta_value = %s",
-						$quiz_id
-					)
-				);
+				$cache_key = 'question_' . $quiz_id;
+				$question = wp_cache_get( $cache_key );
+
+				if ( false === $question ) {
+					$question = $wpdb->get_results(
+						$wpdb->prepare(
+							"SELECT post_id FROM {$table_name} WHERE meta_key = 'quiz_id' AND meta_value = %s",
+							$quiz_id
+						)
+					);
+					wp_cache_set( $cache_key, $question, '', 3600 );
+				}
 
 				$res = array(
 					'quiz_id'     => $quiz_id,
