@@ -35,7 +35,7 @@ function coursefac_delete_course( $course_id ) {
 		$cpt_id_array = $wpdb->get_results(
 			$wpdb->prepare(
 				"SELECT post_id 
-				FROM $table_name
+				FROM {$wpdb->postmeta}
 				WHERE meta_key = 'course_id' 
 					AND meta_value = %d",
 				$course_id
