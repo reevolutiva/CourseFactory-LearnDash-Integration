@@ -6,7 +6,9 @@
  * @package Course Factory Integration
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 if ( ! $api_key ) {
 	echo '<div id="cfact_login_popup"></div>';

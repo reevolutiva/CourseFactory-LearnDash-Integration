@@ -6,7 +6,9 @@
  * @package Course Factory Integration
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * Esta funcion registra el campo personalizado cfact_topic_type para los temas de LearnDash.

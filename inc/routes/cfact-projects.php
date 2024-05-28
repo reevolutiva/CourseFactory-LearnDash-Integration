@@ -6,7 +6,9 @@
  * @package Course Factory Integration
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 // Regitro la ruta cfact-get-project para obtener la lista de proyectos desde CourseFactory.
 add_action(
@@ -109,16 +111,14 @@ function cfact_projects_import_callback( $request ) {
 		$proyect_meta = false;
 
 		$proyectos = array();
-		if( isset( $req_proyects->data ) ){
+		if ( isset( $req_proyects->data ) ) {
 			$proyectos = $req_proyects->data;
 		}
 
-
-
 		// Calculamos cuantas veces debe iterar para hacer fetch de todo.
-		$proyectos =  cfact_get_all_content_by_pagination( $req_proyects, $proyectos, $api_key);
+		$proyectos = cfact_get_all_content_by_pagination( $req_proyects, $proyectos, $api_key );
 
-		#error_log( print_r( $proyect_meta, true ) );
+		// error_log( print_r( $proyect_meta, true ) );
 
 		// Obtenemos el id de cada proyecto y mediante ese ID Listamos todas las verciones de ese proyecto.
 
@@ -126,18 +126,18 @@ function cfact_projects_import_callback( $request ) {
 
 			$project_import_id = (int) $project_import_id;
 
-			error_log( print_r( "project_import_id", true ) );
+			error_log( print_r( 'project_import_id', true ) );
 			error_log( print_r( $project_import_id, true ) );
 
-			error_log( print_r( "n proyectos", true ) );
-			error_log( print_r(  COUNT($proyectos) , true ) );
+			error_log( print_r( 'n proyectos', true ) );
+			error_log( print_r( COUNT( $proyectos ), true ) );
 
 			foreach ( $proyectos as $proyect_item ) {
 
 				if ( $proyect_item->id === $project_import_id ) {
 
-					error_log( print_r( "Aqui lo consigo", true ) );
-					
+					error_log( print_r( 'Aqui lo consigo', true ) );
+
 					$proyect_meta = $proyect_item;
 					break;
 				}
@@ -160,7 +160,7 @@ function cfact_projects_import_callback( $request ) {
 		$proyecto = cfac_get_proyect_version( $api_key, $project_import_id, $default_version_id );
 		$proyecto = json_decode( $proyecto );
 
-		error_log( print_r( "proyect_meta", true ) );
+		error_log( print_r( 'proyect_meta', true ) );
 		error_log( print_r( $proyect_meta, true ) );
 		$course_id = cfact_ld_course_importer( $proyecto, $proyect_meta );
 
