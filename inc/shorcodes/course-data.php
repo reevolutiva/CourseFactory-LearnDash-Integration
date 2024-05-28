@@ -35,8 +35,8 @@ function coursefac_course_data( $atts ) {
 	$cfact_project_outcome_list = get_post_meta( $atts['course-id'], 'cfact_project_outcome_list', true );
 
 	// Desserializo.
-	$cfact_project_meta         = unserialize( $cfact_project_meta );
-	$cfact_project_outcome_list = unserialize( $cfact_project_outcome_list );
+	$cfact_project_meta         = json_decode( json_encode( unserialize( $cfact_project_meta ) ) );
+	$cfact_project_outcome_list = json_decode( json_encode( unserialize( $cfact_project_outcome_list ) ) );
 
 	$html = "<div class='coursefac_course_data'>";
 
