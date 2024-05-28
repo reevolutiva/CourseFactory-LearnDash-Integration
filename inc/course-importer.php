@@ -1,3 +1,4 @@
+<?php
 /**
  * Esta funcion se encarga de crear un curso en LearnDash. Hace una insercion en
  * la tabla wp_posts con el post_type sfwd-courses y crea un custom field con el
