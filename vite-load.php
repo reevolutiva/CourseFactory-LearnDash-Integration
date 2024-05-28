@@ -32,21 +32,6 @@ function enqueue_css(): void {
  *
  * @return void
  */
-/**
- * Enqueues the necessary JavaScript files.
- *
- * @return void
- */
-/**
- * Enqueues the necessary JavaScript files.
- *
- * @return void
- */
-/**
- * Enqueues the necessary JavaScript files.
- *
- * @return void
- */
 function enqueue_script() {
 
 	wp_register_script(
@@ -85,35 +70,11 @@ add_filter( 'script_loader_tag', 'moduleTypeScripts', 10, 2 );
  *
  * @return string The modified HTML script tag.
  */
-/**
- * Adds the type attribute to script tags.
- *
- * @param string $tag    The HTML script tag.
- * @param string $handle The script handle.
- *
- * @return string The modified HTML script tag.
- */
-/**
- * Adds the type attribute to script tags.
- *
- * @param string $tag    The HTML script tag.
- * @param string $handle The script handle.
- *
- * @return string The modified HTML script tag.
- */
-/**
- * Adds the type attribute to script tags.
- *
- * @param string $tag    The HTML script tag.
- * @param string $handle The script handle.
- *
- * @return string The modified HTML script tag.
- */
 function module_type_scripts( $tag, $handle ) {
-	$tyype = wp_scripts()->get_data( $handle, 'type' );
+	$type = wp_scripts()->get_data( $handle, 'type' );
 
-	if ( $tyype ) {
-		$tag = str_replace( 'src', 'type="' . esc_attr( $tyype ) . '" src', $tag );
+	if ( $type ) {
+		$tag = str_replace( 'src', 'type="' . esc_attr( $type ) . '" src', $tag );
 	}
 
 	return $tag;
