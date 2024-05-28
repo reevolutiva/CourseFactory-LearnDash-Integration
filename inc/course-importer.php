@@ -323,6 +323,18 @@ function cfact_ld_lesson_create( $course_id, $lession, $sub_content_list, $secti
  * @param int    $topic_key pocicion del topic en una lista de topicos dentro de una lecccion.
  * @return int
  */
+/**
+ * Creates a topic in LearnDash and saves its type in a custom field.
+ * For video or reading topics, requests the content from the Course Factory API and saves it as the topic's post_content.
+ *
+ * @param int    $content_version_id The content version ID in Course Factory.
+ * @param int    $course_id          The LearnDash course ID.
+ * @param int    $lession_id         The LearnDash lesson ID.  
+ * @param string $title_old          The topic title.
+ * @param string $description_old    The topic description.
+ * @param string $type_a             The topic type.
+ * @return int The new topic post ID.
+ */
 function cfact_ld_topic_create( $content_version_id, $course_id, $lession_id, $title_old, $description_old, $type_a ) {
 
 	// Obtengo el api_key de Course Factory desde wp-options.
@@ -485,6 +497,20 @@ function cfact_ld_topic_create( $content_version_id, $course_id, $lession_id, $t
  * @param int    $topic_key pocicion del topic en una lista de topicos dentro de una lecccion.
  * @return null | string
  */
+/**
+ * Creates a quiz in LearnDash.
+ * This affects 3 tables: wp_posts for the CPT, quizPro-master for quiz metadata, 
+ * and post-meta to link quizPro-master to the CPT.
+ * Requests the quiz content from the Course Factory API and creates question CPTs.
+ *
+ * @param int    $content_version The content version ID in Course Factory.
+ * @param int    $course_id       The LearnDash course ID.
+ * @param int    $lession_id      The LearnDash lesson ID.
+ * @param string $title           The quiz title.
+ * @param string $description     The quiz description. 
+ * @param string $type_a          The quiz type.
+ * @return string|null
+ */  
 function cfact_ld_quiz_create( $content_version, $course_id, $lession_id, $title, $description, $type_a ) {
 
 	if ( ! empty( $content_version ) ) {
