@@ -1,5 +1,4 @@
 <?php
-
 /**
  *  Path: wp-content/plugins/coursefactory-integration/inc/admin-pages/backend-listing.php.
  *  Este archivo contiene el codigo de la pagina de listing en la administracion de coursefactory.
@@ -32,12 +31,13 @@ if ( isset( $req_proyects->data ) ) {
 			$id = $e->id;
 			global $wpdb;
 
-			$table = $wpdb->prefix . 'postmeta';
+			$table = $wpdb->prefix . 'postmeta'; // Consider using wp_cache_get() / wp_cache_set() or wp_cache_delete().
 
 			$post_id = (int) $wpdb->get_var(
 				$wpdb->prepare(
 					"SELECT post_id FROM {$table} WHERE meta_key = %s AND meta_value = %s",
-					array( 'cfact_project_version_id', $id )
+					'cfact_project_version_id',
+					$id
 				)
 			);
 
@@ -50,7 +50,7 @@ if ( isset( $req_proyects->data ) ) {
 				$e->exist = 'false';
 			}
 
-			// Add the API key to the project object
+			// Add the API key to the project object.
 			$e->api_key = $api_key;
 
 			return $e;
