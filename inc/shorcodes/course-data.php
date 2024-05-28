@@ -6,7 +6,9 @@
  * @package Course Factory Integration
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * Callback del shortcode [coursefac_course_data]

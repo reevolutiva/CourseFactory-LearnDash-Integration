@@ -13,14 +13,14 @@ $req_proyects = cfac_get_list_proyects( $api_key );
 $req_proyects = json_decode( $req_proyects );
 
 $proyectos = array();
-if( isset( $req_proyects->data ) ){
+if ( isset( $req_proyects->data ) ) {
 	$proyectos = $req_proyects->data;
 }
 
 
 
 // Calculamos cuantas veces debe iterar para hacer fetch de todo.
-$proyectos =  cfact_get_all_content_by_pagination( $req_proyects, $proyectos, $api_key);
+$proyectos = cfact_get_all_content_by_pagination( $req_proyects, $proyectos, $api_key );
 
 // Obtenemos el id de cada proyecto y mediante ese ID Listamos todas las verciones de ese proyecto.
 if ( isset( $req_proyects->data ) ) {
@@ -28,7 +28,7 @@ if ( isset( $req_proyects->data ) ) {
 	// Buscamos en wp_postmeta un post_id que tenga el meta_key = cfact_project_version_id y el meta_value = id del proyecto.
 	// Si lo encontramos es que hay un curso importado con ese proyecto. y si no lo encontramos es que no hay un curso importado con ese proyecto.
 	$proyectos = array_map(
-		function ( $e ) use ($api_key ) {
+		function ( $e ) use ( $api_key ) {
 			$id = $e->id;
 			global $wpdb;
 
@@ -58,8 +58,7 @@ if ( isset( $req_proyects->data ) ) {
 		$proyectos
 	);
 
-	wp_add_inline_script( 'cfact-learndash-integration', 'var req_project_list =' . wp_json_encode ( $proyectos ) . ";" , 'before' );
+	wp_add_inline_script( 'cfact-learndash-integration', 'var req_project_list =' . wp_json_encode( $proyectos ) . ';', 'before' );
 
 	echo '<div id="cfact_list"></div>';
 }
-

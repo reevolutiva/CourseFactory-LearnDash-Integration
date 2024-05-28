@@ -6,7 +6,9 @@
  * @package Course Factory Integration
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 add_action(
 	'rest_api_init',
