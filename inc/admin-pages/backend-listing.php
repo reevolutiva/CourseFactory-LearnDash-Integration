@@ -7,7 +7,6 @@
  * @package Course Factory Integration
  */
 
-wp_enqueue_script( 'backend-backend-listing-script', plugins_url( 'backend-listing.js', __FILE__ ), array( 'jquery'), true );
 
 // Listamos todos los proyectos.
 $req_proyects = cfac_get_list_proyects( $api_key );
@@ -101,9 +100,11 @@ if ( isset( $req_proyects->data ) ) {
 		$proyectos
 	);
 
-	echo '<script>req_project_list = ' . wp_json_encode( $proyectos ) . ';</script>';
+	wp_add_inline_script( 'cfact-learndash-integration', 'var req_project_list =' . wp_json_encode ( $proyectos ) . ";" , 'before' );
+
 	echo '<div id="cfact_list"></div>';
 }
+
 
 // Add the API key variable at the beginning of the file
 #$api_key = 'your_api_key_here';
