@@ -264,8 +264,6 @@ function cfact_ld_lesson_create( $course_id, $lession, $sub_content_list, $secti
 
 	foreach ( $sub_content_list as $topic_key => $topic ) {
 
-			// error_log( print_r( 'topic', true ) );
-			// error_log( print_r( $topic, true ) );
 
 			$content_version_id = $topic->content_version_id;
 			$type               = $topic->type->name;
