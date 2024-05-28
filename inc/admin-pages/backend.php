@@ -54,9 +54,6 @@ if ( $api_key && ! isset( $_GET['cfact_view_config'] ) ) {
 }
 
 
-// if ( isset( $_GET['cfact_view_config'] ) && ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['cfact_view_config'] ) ), 'cfact_view_config_nonce' ) ) {
-// return;
-// }
 
 // Seccion para logearse en course-factory.
 if ( ! $api_key || isset( $_GET['cfact_view_config'] ) ) {
