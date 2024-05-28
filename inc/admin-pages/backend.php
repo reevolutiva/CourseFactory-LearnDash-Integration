@@ -46,7 +46,9 @@ if ( isset( $_GET['cfact_view_config'] ) && ! wp_verify_nonce( sanitize_text_fie
 	return;
 }
 
-// Seccion de listing.
+/**
+ * Seccion de listing.
+ */
 if ( $api_key && ! isset( $_GET['cfact_view_config'] ) ) {
 	require 'backend-listing.php';
 }
