@@ -32,15 +32,21 @@ function coursefac_delete_course( $course_id ) {
 		// Extraigo de BDD todos los post_id reacionados con el course_id.
 		$table_name = $wpdb->prefix . 'postmeta';
 
-		$cpt_id_array = $wpdb->get_results(
-			$wpdb->prepare(
-				"SELECT post_id 
-				FROM {$table_name}
-				WHERE meta_key = 'course_id' 
-					AND meta_value = %d",
-				$course_id
-			)
-		);
+		$cache_key = 'cpt_id_array_' . $course_id;
+		$cpt_id_array = wp_cache_get( $cache_key );
+
+		if ( false === $cpt_id_array ) {
+			$cpt_id_array = $wpdb->get_results(
+				$wpdb->prepare(
+					"SELECT post_id 
+					FROM {$wpdb->postmeta}
+					WHERE meta_key = 'course_id' 
+						AND meta_value = %d",
+					$course_id
+				)
+			);
+			wp_cache_set( $cache_key, $cpt_id_array, '', 3600 );
+		}
 
 		if ( ! empty( $cpt_id_array ) ) {
 			wp_cache_set( 'cpt_id_array_' . $course_id, $cpt_id_array, '', 3600 );
@@ -90,12 +96,18 @@ function coursefac_delete_course( $course_id ) {
 				$question = wp_cache_get( $cache_key );
 
 				if ( false === $question ) {
-					$question = $wpdb->get_results(
-						$wpdb->prepare(
-							"SELECT post_id FROM {$table_name} WHERE meta_key = 'quiz_id' AND meta_value = %s",
-							$quiz_id
-						)
-					);
+					$cache_key = 'question_' . $quiz_id;
+					$question = wp_cache_get( $cache_key );
+
+					if ( false === $question ) {
+						$question = $wpdb->get_results(
+							$wpdb->prepare(
+								"SELECT post_id FROM {$wpdb->postmeta} WHERE meta_key = 'quiz_id' AND meta_value = %s",
+								$quiz_id
+							)
+						);
+						wp_cache_set( $cache_key, $question, '', 3600 );
+					}
 					wp_cache_set( $cache_key, $question, '', 3600 );
 				}
 
