@@ -56,7 +56,7 @@ add_action( 'admin_enqueue_scripts', 'enqueue_css' );
 
 add_filter( 'script_loader_tag', 'moduleTypeScripts', 10, 2 );
 
-function moduleTypeScripts( $tag, $handle ) {
+function module_type_scripts( $tag, $handle ) {
 	$tyype = wp_scripts()->get_data( $handle, 'type' );
 
 	if ( $tyype ) {
