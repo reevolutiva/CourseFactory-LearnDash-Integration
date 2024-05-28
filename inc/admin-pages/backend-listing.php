@@ -34,8 +34,8 @@ if ( isset( $req_proyects->data ) ) {
 			$post_id   = wp_cache_get( $cache_key );
 
 			if ( false === $post_id ) {
-				$table = $wpdb->prefix . 'postmeta';
-				$query = $wpdb->prepare(
+				$table   = $wpdb->prefix . 'postmeta';
+				$query   = $wpdb->prepare(
 					"SELECT post_id FROM {$wpdb->postmeta} WHERE meta_key = %s AND meta_value = %s",
 					'cfact_project_version_id',
 					$id
