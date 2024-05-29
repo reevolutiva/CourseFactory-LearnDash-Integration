@@ -21,7 +21,7 @@ function coursefac_delete_course( $course_id ) {
 
 	global $wpdb;
 
-	    $result = '';
+		$result = '';
 
 	try {
 		// Parseo id.
@@ -32,11 +32,11 @@ function coursefac_delete_course( $course_id ) {
 		// Extraigo de BDD todos los post_id reacionados con el course_id.
 		$table_name = $wpdb->prefix . 'postmeta';
 
-		$cache_key = 'cpt_id_array_' . $course_id;
+		$cache_key    = 'cpt_id_array_' . $course_id;
 		$cpt_id_array = wp_cache_get( $cache_key );
 
 		if ( false === $cpt_id_array ) {
-			$cache_key = 'cpt_id_array_' . $course_id;
+			$cache_key    = 'cpt_id_array_' . $course_id;
 			$cpt_id_array = wp_cache_get( $cache_key );
 
 			if ( false === $cpt_id_array ) {
@@ -99,15 +99,15 @@ function coursefac_delete_course( $course_id ) {
 				$quiz_id = $e->ID;
 
 				$cache_key = 'question_' . $quiz_id;
-				$question = wp_cache_get( $cache_key );
+				$question  = wp_cache_get( $cache_key );
 
 				if ( false === $question ) {
 					$cache_key = 'question_' . $quiz_id;
-					$question = wp_cache_get( $cache_key );
+					$question  = wp_cache_get( $cache_key );
 
 					if ( false === $question ) {
 						$cache_key = 'question_' . $quiz_id;
-						$question = wp_cache_get( $cache_key );
+						$question  = wp_cache_get( $cache_key );
 
 						if ( false === $question ) {
 							$question = $wpdb->get_results(

@@ -60,7 +60,7 @@ add_action( 'wp_enqueue_scripts', 'enqueue_script' );
 add_action( 'admin_enqueue_scripts', 'enqueue_script' );
 add_action( 'admin_enqueue_scripts', 'enqueue_css' );
 
-add_filter( 'script_loader_tag', 'moduleTypeScripts', 10, 2 );
+add_filter( 'script_loader_tag', 'module_type_scripts', 10, 2 );
 
 /**
  * Adds the type attribute to script tags.
