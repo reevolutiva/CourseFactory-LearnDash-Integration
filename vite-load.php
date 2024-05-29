@@ -5,6 +5,15 @@
  *
  * @package Course Factory Integration */
 
+// namespace Kucrut\ViteForWPExample\React;
+
+// require_once __DIR__ . '/vite-for-wp.php';
+// require_once __DIR__ . '/inc/Enqueue.php';
+
+// Enqueue\frontend();
+// Enqueue\backend();
+
+
 /**
  * Enqueue CSS
  */
@@ -27,55 +36,43 @@ function enqueue_css(): void {
 	);
 }
 
-/**
- * Enqueues the necessary JavaScript files.
- *
- * @return void
- */
-function enqueue_script() {
+function enqueue_script(){
 
-	wp_register_script(
-		'cfact-learndash-integration',
-		CFACT_PLUGIN_URL . 'js/dist/assets/main-a8d868b3.js',
-		array( 'wp-api' ),
-		'1.0.0',
-		true
-	);
+    wp_register_script(
+        'cfact-learndash-integration', 
+        CFACT_PLUGIN_URL . 'js/dist/assets/main-a8d868b3.js',
+        array( 'wp-api' ),
+        '1.0.0',
+        true
+    );
 
-	wp_register_script(
-		'cfact-learndash-integration-customize',
-		CFACT_PLUGIN_URL . 'js/public/cfactory-customize.js',
-		array(),
-		'1.0.0',
-		true
-	);
+    wp_register_script(
+        'cfact-learndash-integration-customize', 
+        CFACT_PLUGIN_URL . 'js/public/cfactory-customize.js',
+        '1.0.0',
+        true
+    );
 
-	wp_enqueue_script( 'cfact-learndash-integration' );
-	wp_enqueue_script( 'cfact-learndash-integration-customize' );
+    wp_enqueue_script('cfact-learndash-integration');
+    wp_enqueue_script('cfact-learndash-integration-customize');
 
-	wp_scripts()->add_data( 'cfact-learndash-integration', 'type', 'module' );
+    wp_scripts()->add_data('cfact-learndash-integration', 'type', 'module');
+
 }
 
 add_action( 'wp_enqueue_scripts', 'enqueue_script' );
 add_action( 'admin_enqueue_scripts', 'enqueue_script' );
 add_action( 'admin_enqueue_scripts', 'enqueue_css' );
 
-add_filter( 'script_loader_tag', 'module_type_scripts', 10, 2 );
+add_filter('script_loader_tag', 'moduleTypeScripts', 10, 2);
 
-/**
- * Adds the type attribute to script tags.
- *
- * @param string $tag    The HTML script tag.
- * @param string $handle The script handle.
- *
- * @return string The modified HTML script tag.
- */
-function module_type_scripts( $tag, $handle ) {
-	$type = wp_scripts()->get_data( $handle, 'type' );
+function moduleTypeScripts($tag, $handle)
+{
+    $tyype = wp_scripts()->get_data($handle, 'type');
 
-	if ( $type ) {
-		$tag = str_replace( 'src', 'type="' . esc_attr( $type ) . '" src', $tag );
-	}
+    if ($tyype) {
+        $tag = str_replace('src', 'type="' . esc_attr($tyype) . '" src', $tag);
+    }
 
-	return $tag;
+    return $tag;
 }

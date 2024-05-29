@@ -1,0 +1,27 @@
+.cfact-proyecto-item-new{
+
+    a, a:visited{
+        color: #000;
+        text-decoration: none;
+    }
+
+    .cfact-proyecto-item__inside{
+        display: flex;
+        align-items: center;
+    }
+   
+    picture{
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        h4{
+            font-size: 35px;
+        }
+        svg{
+            height: 70px;
+        }
+    }
+}

@@ -1,0 +1,166 @@
+.LoginForm-contain{
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+
+    .header{
+        position: relative;
+        
+        h1 {
+
+            display: flex;
+            align-items: flex-end;
+
+            img{
+                width: 384px;
+            }
+
+            span{
+                font-size: 25px;
+            }
+
+        }
+
+        .button_contain{
+            position: absolute;
+            right: 0;
+            top: 10px;
+        }
+
+        button.setting, button.help{
+            background-color: transparent;
+            border: none;
+        }
+
+        button.setting{
+        &:hover{
+            &::after{
+                content: "Settings";
+                padding: 5px;
+                display: block;
+                color: #fff;
+                background-color: #000;
+                position: absolute;
+                top: 0;
+                left: 100px;
+            }
+        }}
+
+        button.help{
+        &:hover{
+            &::after{
+                content: "Help";
+                padding: 5px;
+                display: block;
+                color: #fff;
+                background-color: #000;
+                position: absolute;
+                top: 0;
+                left: 50px;
+            }
+        }}
+    }
+}
+
+.LoginForm{
+    background-color: #fff;
+    box-shadow: rgba(#000, 0.25) 0 0 4px;
+    padding: 30px;
+
+    &--footer{
+        p b{
+            display: block;
+        }
+    }
+
+    a{
+        color: #000 !important;
+        text-decoration: underline;
+    }
+    
+
+    .btn-cfac{
+        background-color: #000;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 18px;
+        padding: 10px 20px;
+        text-decoration: underline;
+
+        &:hover{
+            background-color: transparent;
+            color: #000 !important;
+            outline: 2px solid #000;
+            text-decoration: underline;
+        }
+    }
+
+    section, form{
+        max-width: 395px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    h3{
+        font-size: 24px;
+        font-weight: noraml;
+        margin-bottom: 0;
+    }
+
+    p{
+        font-size: 12px;
+    }
+
+    form{       
+
+        input[type="text"]{
+            border: 1px solid #000;
+            border-radius: 5px;
+            padding: 5px 10px;
+            font-size: 18px;
+            width: 100%;
+            line-height: 1em;
+
+            &::placeholder{
+                line-height: 1em;
+                font-size: 18px;
+            }
+        }
+
+        label{
+            display: block;
+            max-width: 395px;
+            margin: 0 auto;
+
+            p {
+                text-align: right;
+                
+                a, a:visited{
+                    color: #D63638 !important;
+                    font-size: 12px;
+                    text-decoration: none;
+                }
+
+                a:hover{
+                    text-decoration: underline;
+                }
+            }
+        }
+
+    }
+
+    .keep-me {
+        width: 100%;
+        p{
+            display: flex;
+            justify-content: center;
+            gap:20px;
+        }
+        input{
+            border: 1px solid #000;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+    }
+}
