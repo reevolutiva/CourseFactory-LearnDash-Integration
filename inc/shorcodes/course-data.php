@@ -34,9 +34,11 @@ function coursefac_course_data( $atts ) {
 	$cfact_project_meta         = get_post_meta( $atts['course-id'], 'cfact_project_meta', true );
 	$cfact_project_outcome_list = get_post_meta( $atts['course-id'], 'cfact_project_outcome_list', true );
 
+	error_log( print_r( $cfact_project_outcome_list, true ) );
+
 	// Desserializo.
-	$cfact_project_meta         = json_decode( json_encode( unserialize( $cfact_project_meta ) ) );
-	$cfact_project_outcome_list = json_decode( json_encode( unserialize( $cfact_project_outcome_list ) ) );
+	$cfact_project_meta         = json_decode( $cfact_project_meta, false, 512, JSON_UNESCAPED_UNICODE );
+	$cfact_project_outcome_list = json_decode( $cfact_project_outcome_list, false, 512, JSON_UNESCAPED_UNICODE  );
 
 	$html = "<div class='coursefac_course_data'>";
 
