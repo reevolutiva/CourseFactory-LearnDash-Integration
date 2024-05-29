@@ -1,0 +1,53 @@
+const RequestLession = (slug ,title, content, templ, status, author, course) =>{
+    const template = {
+         "slug": slug,
+         "status": status,
+         "password": "",
+         "title": title,
+         "content": content,
+         "author": author,
+         "featured_media": 456,
+         "comment_status": "open",
+         "ping_status": "open",
+         "menu_order": 1,
+         "meta": {
+           "duration": "2 hours" 
+         },
+         "template": "",
+         "categories": [],
+         "tags": [],
+         "ld_lesson_category": [],
+         "ld_lesson_tag": [],
+         "materials_enabled": true,
+         "materials": [],
+         "video_enabled": true, 
+         "video_url": "" ,
+         "video_shown": "AFTER",
+         "video_auto_complete": true,
+         "video_auto_complete_delay": 10,
+         "video_show_complete_button": true,
+         "video_auto_start": false,
+         "video_show_controls": true,
+         "video_focus_pause": true,
+         "video_resume": true,
+         "assignment_upload_enabled": true,
+         "assignment_upload_limit_extensions": "pdf,doc",
+         "assignment_upload_limit_size": 10000000,
+         "assignment_points_enabled": true,
+         "assignment_points_amount": 15,
+         "assignment_auto_approve": false,
+         "assignment_upload_limit_count": 1,
+         "assignment_deletion_enabled": true,
+         "forced_timer_enabled": true,
+         "forced_timer_amount": 3600,
+         "course": course,
+         "is_sample": false,
+         "visible_type": "visible_after_specific_date",
+         "visible_after": 0,
+         "visible_after_specific_date": "2023-03-01"
+       };
+
+       return template;
+}
+
+export {RequestLession};
