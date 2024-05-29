@@ -136,7 +136,7 @@ function cfact_ld_course_create( $title, $description, $outcome_list, $structure
 		'meta_input'   => array(
 			'cfact_project_version'      => $version,
 			'cfact_project_version_id'   => $id,
-			'cfact_project_outcome_list' => wp_json_encode( $outcome_list ),
+			'cfact_project_outcome_list' => wp_json_encode( $outcome_list, JSON_UNESCAPED_UNICODE ),
 		),
 	);
 
@@ -171,7 +171,7 @@ function cfact_ld_course_create( $title, $description, $outcome_list, $structure
 	);
 
 	if ( false !== $proyect_meta ) {
-		$serialized_proyect_meta = wp_json_encode( $proyect_meta );
+		$serialized_proyect_meta = wp_json_encode( $proyect_meta, JSON_UNESCAPED_UNICODE );
 		update_post_meta( $course_id, 'cfact_project_meta', $serialized_proyect_meta );
 	}
 
